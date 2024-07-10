@@ -4,9 +4,9 @@ export const ControlsContext = createContext();
 
 export const ControlsProvider = ({ children }) => {
   const [color, setColor] = useState("#000000");
-  const [xPosition, setXPosition] = useState(3);
-  const [yPosition, setYPosition] = useState(3);
-  const [blurValue, setBlurValue] = useState(10);
+  const [xPosition, setXPosition] = useState(20);
+  const [yPosition, setYPosition] = useState(20);
+  const [blurValue, setBlurValue] = useState(0);
   const [spreadValue, setSpreadValue] = useState(0);
 
   return (
