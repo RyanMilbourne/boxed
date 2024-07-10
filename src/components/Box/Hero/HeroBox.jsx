@@ -4,10 +4,12 @@ import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
 const HeroBox = () => {
   const [radius, setRadius] = useState(20);
   const [aspectRatio, setAspectRatio] = useState("1/1");
+  const [backgroundColor, setBackgroundColor] = useState("#ffb36b");
 
   const boxStyle = {
     borderRadius: `${radius}px`,
     aspectRatio: aspectRatio,
+    backgroundColor: backgroundColor,
   };
 
   const onRadiusChange = (e) => {
@@ -16,6 +18,10 @@ const HeroBox = () => {
 
   const onRatioChange = (e) => {
     setAspectRatio(e.target.textContent);
+  };
+
+  const onColorChange = (e) => {
+    setBackgroundColor(e.target.value);
   };
 
   return (
@@ -51,6 +57,20 @@ const HeroBox = () => {
             {ratio}
           </div>
         ))}
+      </div>
+      <div className="hero-box-color-container">
+        <div
+          className="color-picker-display"
+          style={{ backgroundColor: backgroundColor }}
+        >
+          <input
+            className="color-picker"
+            type="color"
+            value={backgroundColor}
+            onChange={onColorChange}
+          />
+        </div>
+        {backgroundColor}
       </div>
     </div>
   );

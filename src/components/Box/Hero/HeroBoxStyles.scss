@@ -11,15 +11,8 @@
 }
 
 .hero-box {
-  // aspect-ratio: 1/1;
-  // aspect-ratio: 3/4;
-  // aspect-ratio: 4/3;
-  // aspect-ratio: 4/5;
-  // aspect-ratio: 5/4;
-  // aspect-ratio: 16/9;
   width: 50%;
   max-width: 350px;
-  background-color: rgb(49, 48, 51);
   transition: all 0.5s ease;
 }
 
@@ -83,4 +76,13 @@
 .active {
   background-color: whitesmoke;
   color: $dark-text;
+}
+
+.hero-box-color-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
