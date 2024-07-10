@@ -1,0 +1,15 @@
+.hero-box-container {
+  width: calc(100% - 30% - 1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.hero-box {
+  aspect-ratio: 1/1;
+  width: 50%;
+  max-width: 350px;
+  background-color: rgb(49, 48, 51);
+}

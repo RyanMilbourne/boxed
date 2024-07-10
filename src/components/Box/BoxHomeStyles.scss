@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.box-home-container {
+  width: 100%;
+  min-height: 600px;
+  color: $dark-text;
+  border-radius: 20px;
+  display: flex;
+  gap: 1rem;
+}
