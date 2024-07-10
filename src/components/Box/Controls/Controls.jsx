@@ -112,7 +112,7 @@ const Controls = () => {
         <input
           className="xybs-input"
           type="range"
-          min="0"
+          min="-100"
           max="100"
           value={spreadValue}
           onChange={handleSpreadChange}
@@ -120,7 +120,7 @@ const Controls = () => {
         <input
           className="xybs-input"
           type="number"
-          min="0"
+          min="-100"
           max="100"
           value={spreadValue}
           onChange={handleSpreadChange}
