@@ -33,64 +33,52 @@ const Controls = () => {
   };
 
   return (
-    <div className="controls-container">
-      <div className="controls-wrapper">
-        <div className="controls-header">Controls</div>
-        <div className="controls-body">
-          <form className="control-form">
-            <div className="control-option">
-              <div
-                className="color-picker-display"
-                style={{ backgroundColor: color }}
-              >
-                <input
-                  className="color-picker"
-                  type="color"
-                  value={color}
-                  onChange={handleColorChange}
-                />
-              </div>
-              <div className="xybs-position-container">
-                <SwapHorizRoundedIcon />
-                <input
-                  className="xybs-input"
-                  type="number"
-                  value={xPosition}
-                  onChange={handleXPosition}
-                />
-              </div>
-              <div className="xybs-position-container">
-                <SwapVertRoundedIcon />
-                <input
-                  className="xybs-input"
-                  type="number"
-                  value={yPosition}
-                  onChange={handleYPosition}
-                />
-              </div>
-              <div className="xybs-position-container">
-                <BlurOnRoundedIcon />
-                <input
-                  className="xybs-input"
-                  type="number"
-                  min="0"
-                  value={blurValue}
-                  onChange={handleBlurChange}
-                />
-              </div>
-              <div className="xybs-position-container">
-                <CheckBoxOutlineBlankRoundedIcon />
-                <input
-                  className="xybs-input"
-                  type="number"
-                  min="0"
-                  value={spreadValue}
-                  onChange={handleSpreadChange}
-                />
-              </div>
-            </div>
-          </form>
-        </div>
+    <div className="control-option">
+      <div className="color-picker-display" style={{ backgroundColor: color }}>
+        <input
+          className="color-picker"
+          type="color"
+          value={color}
+          onChange={handleColorChange}
+        />
+      </div>
+      <div className="xybs-position-container">
+        <SwapHorizRoundedIcon />
+        <input
+          className="xybs-input"
+          type="number"
+          value={xPosition}
+          onChange={handleXPosition}
+        />
+      </div>
+      <div className="xybs-position-container">
+        <SwapVertRoundedIcon />
+        <input
+          className="xybs-input"
+          type="number"
+          value={yPosition}
+          onChange={handleYPosition}
+        />
+      </div>
+      <div className="xybs-position-container">
+        <BlurOnRoundedIcon />
+        <input
+          className="xybs-input"
+          type="number"
+          min="0"
+          value={blurValue}
+          onChange={handleBlurChange}
+        />
+      </div>
+      <div className="xybs-position-container">
+        <CheckBoxOutlineBlankRoundedIcon />
+        <input
+          className="xybs-input"
+          type="number"
+          min="0"
+          value={spreadValue}
+          onChange={handleSpreadChange}
+        />
       </div>
     </div>
   );

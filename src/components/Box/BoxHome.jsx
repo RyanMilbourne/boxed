@@ -1,12 +1,12 @@
 import React from "react";
 import "./BoxHomeStyles.scss";
 import HeroBox from "./Hero/HeroBox";
-import Controls from "./Controls/Controls";
+import ControlsHome from "./Controls/ControlsHome";
 
 const BoxHome = () => {
   return (
     <div className="box-home-container">
-      <Controls />
+      <ControlsHome />
       <HeroBox />
     </div>
   );
