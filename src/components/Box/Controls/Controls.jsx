@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./ControlsStyles.scss";
 import SwapHorizRoundedIcon from "@mui/icons-material/SwapHorizRounded";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import BlurOnRoundedIcon from "@mui/icons-material/BlurOnRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
+import { ControlsContext } from "../../../hooks/ControlsContext";
 
 const Controls = () => {
-  const [color, setColor] = useState("#000000");
-  const [xPosition, setXPosition] = useState(1);
-  const [yPosition, setYPosition] = useState(1);
-  const [blurValue, setBlurValue] = useState(0);
-  const [spreadValue, setSpreadValue] = useState(0);
+  const {
+    color,
+    setColor,
+    xPosition,
+    setXPosition,
+    yPosition,
+    setYPosition,
+    blurValue,
+    setBlurValue,
+    spreadValue,
+    setSpreadValue,
+  } = useContext(ControlsContext);
 
   const handleColorChange = (e) => {
     setColor(e.target.value);

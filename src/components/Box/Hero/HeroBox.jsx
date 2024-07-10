@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./HeroBoxStyles.scss";
 import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
+import { ControlsContext } from "../../../hooks/ControlsContext";
 const HeroBox = () => {
   const [radius, setRadius] = useState(20);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [backgroundColor, setBackgroundColor] = useState("#ffb36b");
 
+  const { color, xPosition, yPosition, blurValue, spreadValue } =
+    useContext(ControlsContext);
+
   const boxStyle = {
     borderRadius: `${radius}px`,
     aspectRatio: aspectRatio,
     backgroundColor: backgroundColor,
+    boxShadow: `${xPosition}px ${yPosition}px ${blurValue}px ${spreadValue}px ${color}`,
   };
 
   const onRadiusChange = (e) => {
