@@ -11,10 +11,16 @@
 }
 
 .hero-box {
-  aspect-ratio: 1/1;
+  // aspect-ratio: 1/1;
+  // aspect-ratio: 3/4;
+  // aspect-ratio: 4/3;
+  // aspect-ratio: 4/5;
+  // aspect-ratio: 5/4;
+  // aspect-ratio: 16/9;
   width: 50%;
   max-width: 350px;
   background-color: rgb(49, 48, 51);
+  transition: all 0.5s ease;
 }
 
 .hero-box-radius-container {
@@ -43,4 +49,38 @@
 .slider {
   width: 100px;
   padding: 0;
+}
+
+.hero-box-aspect-ratio-container {
+  position: absolute;
+  right: -55px;
+  min-width: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aspect-ratio {
+  color: whitesmoke;
+  font-weight: 500;
+  font-size: 14px;
+  border: 1px solid whitesmoke;
+  border-radius: 0 60px 60px 0;
+  width: 60px;
+  height: 50px;
+  padding-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.aspect-ratio:hover {
+  transform: translateX(10px);
+}
+
+.active {
+  background-color: whitesmoke;
+  color: $dark-text;
 }
