@@ -5,7 +5,8 @@ import { ControlsContext } from "../../../hooks/ControlsContext";
 const HeroBox = () => {
   const [radius, setRadius] = useState(20);
   const [aspectRatio, setAspectRatio] = useState("1/1");
-  const [backgroundColor, setBackgroundColor] = useState("#ffb36b");
+  const [boxColor, setBoxColor] = useState("#42ff8b");
+  const [backgroundColor, setBackgroundColor] = useState("#f5f5f5");
 
   const { color, xPosition, yPosition, blurValue, spreadValue } =
     useContext(ControlsContext);
@@ -13,7 +14,7 @@ const HeroBox = () => {
   const boxStyle = {
     borderRadius: `${radius}px`,
     aspectRatio: aspectRatio,
-    backgroundColor: backgroundColor,
+    backgroundColor: boxColor,
     boxShadow: `${xPosition}px ${yPosition}px ${blurValue}px ${spreadValue}px ${color}`,
   };
 
@@ -25,12 +26,19 @@ const HeroBox = () => {
     setAspectRatio(e.target.textContent);
   };
 
-  const onColorChange = (e) => {
+  const handleBoxColor = (e) => {
+    setBoxColor(e.target.value);
+  };
+
+  const handleBackgroundColor = (e) => {
     setBackgroundColor(e.target.value);
   };
 
   return (
-    <div className="hero-box-container">
+    <div
+      className="hero-box-container"
+      style={{ backgroundColor: backgroundColor }}
+    >
       <div className="hero-box" style={boxStyle}></div>
       <div className="hero-box-radius-container">
         <RoundedCornerIcon />
@@ -57,6 +65,7 @@ const HeroBox = () => {
           <div
             key={ratio}
             className={`aspect-ratio ${aspectRatio === ratio ? "active" : ""}`}
+            style={{ border: `1px solid ${backgroundColor}` }}
             onClick={onRatioChange}
           >
             {ratio}
@@ -66,13 +75,28 @@ const HeroBox = () => {
       <div className="hero-box-color-container">
         <div
           className="color-picker-display"
-          style={{ backgroundColor: backgroundColor }}
+          style={{ backgroundColor: boxColor }}
+        >
+          <input
+            className="color-picker"
+            type="color"
+            value={boxColor}
+            onChange={handleBoxColor}
+          />
+        </div>
+        {boxColor}
+        <div
+          className="color-picker-display"
+          style={{
+            backgroundColor: backgroundColor,
+            border: "1px solid black",
+          }}
         >
           <input
             className="color-picker"
             type="color"
             value={backgroundColor}
-            onChange={onColorChange}
+            onChange={handleBackgroundColor}
           />
         </div>
         {backgroundColor}
