@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ControlsStyles.scss";
 
 const Controls = () => {
+  const [color, setColor] = useState("#000000");
+
+  const handleColorChange = (e) => {
+    setColor(e.target.value);
+  };
   return (
     <div className="controls-container">
       <div className="controls-wrapper">
@@ -9,7 +14,17 @@ const Controls = () => {
         <div className="controls-body">
           <form className="control-form">
             <div className="control-option">
-              <span>color</span>
+              <div
+                className="color-picker-container"
+                style={{ backgroundColor: color }}
+              >
+                <input
+                  className="color-picker"
+                  type="color"
+                  value={color}
+                  onChange={handleColorChange}
+                />
+              </div>
               <span>x</span>
               <span>y</span>
               <span>blur</span>
