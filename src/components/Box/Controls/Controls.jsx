@@ -54,7 +54,17 @@ const Controls = () => {
         <SwapHorizRoundedIcon />
         <input
           className="xybs-input"
+          type="range"
+          min="-100"
+          max="100"
+          value={xPosition}
+          onChange={handleXPosition}
+        />
+        <input
+          className="xybs-input"
           type="number"
+          min="-100"
+          max="100"
           value={xPosition}
           onChange={handleXPosition}
         />
@@ -63,7 +73,17 @@ const Controls = () => {
         <SwapVertRoundedIcon />
         <input
           className="xybs-input"
+          type="range"
+          min="-100"
+          max="100"
+          value={yPosition}
+          onChange={handleYPosition}
+        />
+        <input
+          className="xybs-input"
           type="number"
+          min="-100"
+          max="100"
           value={yPosition}
           onChange={handleYPosition}
         />
@@ -72,8 +92,17 @@ const Controls = () => {
         <BlurOnRoundedIcon />
         <input
           className="xybs-input"
+          type="range"
+          min="0"
+          max="100"
+          value={blurValue}
+          onChange={handleBlurChange}
+        />
+        <input
+          className="xybs-input"
           type="number"
           min="0"
+          max="100"
           value={blurValue}
           onChange={handleBlurChange}
         />
@@ -82,8 +111,17 @@ const Controls = () => {
         <CheckBoxOutlineBlankRoundedIcon />
         <input
           className="xybs-input"
+          type="range"
+          min="0"
+          max="100"
+          value={spreadValue}
+          onChange={handleSpreadChange}
+        />
+        <input
+          className="xybs-input"
           type="number"
           min="0"
+          max="100"
           value={spreadValue}
           onChange={handleSpreadChange}
         />
