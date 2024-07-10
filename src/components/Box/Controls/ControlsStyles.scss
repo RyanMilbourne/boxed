@@ -37,6 +37,13 @@
 }
 
 .color-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+}
+
+.color-picker-display {
   width: 30px;
   height: 30px;
   border-radius: 20px;
@@ -44,12 +51,31 @@
   align-items: center;
   justify-content: center;
 }
+
 .color-picker {
   opacity: 0;
   border: 0;
   padding: 0;
   background-color: transparent;
-  inline-size: 20px;
-  block-size: 20px;
+  inline-size: 0px;
+  block-size: 0px;
   cursor: pointer;
+}
+
+.xybs-position-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 40px;
+}
+
+.xybs-input {
+  width: 100%;
+  padding: 6px;
+  background-color: transparent;
+  color: $dark-text;
+  border: 1px solid $dark-text;
+  border-radius: 20px;
+  text-align: center;
 }
