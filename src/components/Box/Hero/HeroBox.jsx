@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./HeroBoxStyles.scss";
+import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
 const HeroBox = () => {
   const [radius, setRadius] = useState(20);
 
@@ -15,6 +16,7 @@ const HeroBox = () => {
     <div className="hero-box-container">
       <div className="hero-box" style={boxStyle}></div>
       <div className="hero-box-radius-container">
+        <RoundedCornerIcon />
         <span>border-radius</span>
         <input
           type="range"
@@ -24,7 +26,6 @@ const HeroBox = () => {
           value={radius}
           onChange={onRadiusChange}
         />
-        {/* {radius}px */}
         <input
           className="hero-radius"
           type="number"
