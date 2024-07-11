@@ -100,7 +100,9 @@ const HeroBox = () => {
             className={`aspect-ratio ${aspectRatio === ratio ? "active" : ""}`}
             style={{
               border: `1px solid ${backgroundColor}`,
-              backgroundColor: backgroundColor,
+              backgroundColor:
+                aspectRatio === ratio ? backgroundColor : "transparent",
+              color: aspectRatio === ratio ? textColor : "white",
             }}
             onClick={onRatioChange}
           >
