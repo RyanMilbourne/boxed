@@ -6,7 +6,16 @@
   justify-content: space-between;
   border-radius: 20px;
   padding: 10px 20px;
+  position: relative;
   box-shadow: $input-shadow-1;
+}
+
+.remove-button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  color: rgb(255, 37, 88);
+  cursor: pointer;
 }
 
 .color-picker-container {

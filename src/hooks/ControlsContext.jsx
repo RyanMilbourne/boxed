@@ -34,7 +34,13 @@ export const ControlsProvider = ({ children }) => {
   };
 
   const removeBoxShadow = (index) => {
-    setBoxShadows(boxShadows.filter((_, i) => i !== index));
+    if (boxShadows.length > 1 && index >= 0 && index < boxShadows.length) {
+      setBoxShadows((prevBoxShadows) => {
+        const newBoxShadows = [...prevBoxShadows];
+        newBoxShadows.splice(index, 1);
+        return newBoxShadows;
+      });
+    }
   };
 
   return (

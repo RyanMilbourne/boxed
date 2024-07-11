@@ -11,11 +11,13 @@ import SwapHorizRoundedIcon from "@mui/icons-material/SwapHorizRounded";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import BlurOnRoundedIcon from "@mui/icons-material/BlurOnRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
+import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
 import useClickOutside from "../../../hooks/useClickOutside";
 
 const Controls = ({ index }) => {
-  const { boxShadows, updateBoxShadow } = useContext(ControlsContext);
+  const { boxShadows, updateBoxShadow, removeBoxShadow } =
+    useContext(ControlsContext);
   const shadow = boxShadows[index];
 
   const popover = useRef();
@@ -81,6 +83,12 @@ const Controls = ({ index }) => {
 
   return (
     <div className="control-option">
+      {index > 0 && (
+        <div className="remove-button" onClick={() => removeBoxShadow(index)}>
+          <RemoveCircleRoundedIcon />
+        </div>
+      )}
+
       <div
         className="color-picker-display"
         style={{ backgroundColor: shadow.color }}
