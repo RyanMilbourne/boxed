@@ -14,6 +14,7 @@ export const ControlsProvider = ({ children }) => {
   ]);
 
   const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
+  const [textColor, setTextColor] = useState("#0b090d");
 
   const addBoxShadow = () => {
     setBoxShadows([
@@ -55,12 +56,12 @@ export const ControlsProvider = ({ children }) => {
   const updateTextColor = (bgColor) => {
     const luminance = calculateLuminance(bgColor);
     const newTextColor = luminance > 128 ? "#000000" : "#ffffff";
-    return newTextColor;
+    setTextColor(newTextColor);
   };
 
   const handleBackgroundColor = (newColor) => {
     setBackgroundColor(newColor);
-    return updateTextColor(newColor);
+    updateTextColor(newColor);
   };
 
   return (
@@ -74,6 +75,7 @@ export const ControlsProvider = ({ children }) => {
         updateTextColor,
         backgroundColor,
         handleBackgroundColor,
+        textColor,
       }}
     >
       {children}

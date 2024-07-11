@@ -9,12 +9,13 @@ const HeroBox = () => {
   const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
-  const [textColor, setTextColor] = useState("#0b090d");
+  // const [textColor, setTextColor] = useState("#0b090d");
   const [scale, setScale] = useState(1);
 
   const {
     boxShadows,
     backgroundColor,
+    textColor,
     handleBackgroundColor,
     updateTextColor,
   } = useContext(ControlsContext);
@@ -47,9 +48,7 @@ const HeroBox = () => {
   };
 
   const handleBackgroundColorChange = (e) => {
-    const newColor = e.target.value;
-    const newTextColor = handleBackgroundColor(newColor);
-    setTextColor(newTextColor);
+    handleBackgroundColor(e.target.value);
   };
 
   const handleScaleIncrease = () => {
@@ -61,8 +60,7 @@ const HeroBox = () => {
   };
 
   useEffect(() => {
-    const initialTextColor = updateTextColor(backgroundColor);
-    setTextColor(initialTextColor);
+    updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
 
   return (
