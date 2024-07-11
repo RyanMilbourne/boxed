@@ -13,6 +13,7 @@
   align-items: center;
   gap: 10px;
   position: relative;
+  transition: all 0.25s ease;
 }
 
 .results-text {
@@ -26,18 +27,10 @@
   position: absolute;
   right: 16px;
   top: 16px;
-  // color: rgba(245, 245, 245, 0.436);
+  transition: all 0.25s ease;
   cursor: pointer;
 }
 
 .copy-to-clipboard-wrapper:hover {
   color: whitesmoke;
 }
-
-// .success {
-//   color: lime;
-// }
-
-// .success:hover {
-//   color: lime;
-// }

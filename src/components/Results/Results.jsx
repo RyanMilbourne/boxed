@@ -50,11 +50,7 @@ const Results = () => {
         {copySuccess && <CheckCircleOutlineRoundedIcon style={iconStyle} />}
         {!copySuccess && <ContentCopyRoundedIcon style={iconStyle} />}
       </div>
-      <div
-        className="results-text"
-        ref={textRef}
-        // style={{ color: backgroundColor }}
-      >
+      <div className="results-text" ref={textRef}>
         box-shadow: {boxShadowValue}
       </div>
     </div>
