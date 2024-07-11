@@ -1,0 +1,29 @@
+@import "../../variables.scss";
+
+.results-container {
+  margin-top: -1rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100px;
+  padding: 20px 40px 20px 20px;
+  border-radius: 20px;
+  border: 1px solid whitesmoke;
+  position: relative;
+}
+
+.results-text {
+  font-family: monospace;
+  font-size: 14px;
+  text-align: left;
+}
+
+.copy-to-clipboard-wrapper {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+
+.copy-to-clipboard-wrapper:hover {
+  color: lime;
+}

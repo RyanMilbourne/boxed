@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import BoxHome from "./components/Box/BoxHome";
+import Results from "./components/Results/Results";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +16,7 @@ function App() {
           <p>A way to visualize box-shadows</p>
         </div>
         <BoxHome />
+        <Results />
       </div>
     </div>
   );
