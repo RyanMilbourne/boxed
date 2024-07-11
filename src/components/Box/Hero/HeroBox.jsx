@@ -3,7 +3,7 @@ import "./HeroBoxStyles.scss";
 import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
 import { ControlsContext } from "../../../hooks/ControlsContext";
 const HeroBox = () => {
-  const [radius, setRadius] = useState(20);
+  const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
   const [backgroundColor, setBackgroundColor] = useState("#f5f5f5");
