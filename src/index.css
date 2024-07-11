@@ -3,7 +3,7 @@
 
   color-scheme: dark light;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0b090d;
+  background-color: #1c1c1c;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,7 +14,6 @@
 
 body {
   font-family: "Space Grotesk", sans-serif;
-  /* color: rgb(30, 30, 30); */
   margin: 0;
 }
 

@@ -13,7 +13,7 @@ function App() {
           <h1>Boxed</h1>
         </div>
         <div className="app-description">
-          <p>A way to visualize box-shadows</p>
+          <p>a dynamic way to visualize box-shadows</p>
         </div>
         <BoxHome />
         <Results />
