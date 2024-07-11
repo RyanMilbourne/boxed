@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./HeroBoxStyles.scss";
 import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
+import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
+
 const HeroBox = () => {
   const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
   const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
   const [textColor, setTextColor] = useState("#0b090d");
+  const [scale, setScale] = useState(1);
 
   const { color, xPosition, yPosition, blurValue, spreadValue } =
     useContext(ControlsContext);
@@ -17,6 +21,7 @@ const HeroBox = () => {
     aspectRatio: aspectRatio,
     backgroundColor: boxColor,
     boxShadow: `${xPosition}px ${yPosition}px ${blurValue}px ${spreadValue}px ${color}`,
+    transform: `scale(${scale})`,
   };
 
   const onRadiusChange = (e) => {
@@ -48,6 +53,14 @@ const HeroBox = () => {
     const luminance = calculateLuminance(bgColor);
     const newTextColor = luminance > 128 ? "#000000" : "#ffffff";
     setTextColor(newTextColor);
+  };
+
+  const handleScaleIncrease = () => {
+    setScale((prevScale) => Math.min(prevScale + 0.1, 1));
+  };
+
+  const handleScaleDecrease = () => {
+    setScale((prevScale) => Math.max(prevScale - 0.1, 0.1));
   };
 
   useEffect(() => {
@@ -126,6 +139,14 @@ const HeroBox = () => {
           />
         </div>
         {backgroundColor}
+      </div>
+      <div className="hero-box-scale-container">
+        <div className="scale-icon" onClick={handleScaleDecrease}>
+          <RemoveCircleRoundedIcon />
+        </div>
+        <div className="scale-icon">
+          <AddCircleRoundedIcon onClick={handleScaleIncrease} />
+        </div>
       </div>
     </div>
   );
