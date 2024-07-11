@@ -16,7 +16,7 @@ import { ControlsContext } from "../../../hooks/ControlsContext";
 import useClickOutside from "../../../hooks/useClickOutside";
 
 const Controls = ({ index }) => {
-  const { boxShadows, updateBoxShadow, removeBoxShadow } =
+  const { boxShadows, updateBoxShadow, removeBoxShadow, textColor } =
     useContext(ControlsContext);
   const shadow = boxShadows[index];
 
@@ -72,6 +72,10 @@ const Controls = ({ index }) => {
     });
   };
 
+  const dynamicBorder = {
+    border: `1px solid ${textColor}`,
+  };
+
   return (
     <div className="control-option">
       {index > 0 && (
@@ -102,6 +106,7 @@ const Controls = ({ index }) => {
         />
         <input
           className="xybs-input"
+          style={dynamicBorder}
           type="number"
           min="-100"
           max="100"
@@ -121,6 +126,7 @@ const Controls = ({ index }) => {
         />
         <input
           className="xybs-input"
+          style={dynamicBorder}
           type="number"
           min="-100"
           max="100"
@@ -140,6 +146,7 @@ const Controls = ({ index }) => {
         />
         <input
           className="xybs-input"
+          style={dynamicBorder}
           type="number"
           min="0"
           max="100"
@@ -159,6 +166,7 @@ const Controls = ({ index }) => {
         />
         <input
           className="xybs-input"
+          style={dynamicBorder}
           type="number"
           min="-100"
           max="100"

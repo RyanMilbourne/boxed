@@ -57,8 +57,8 @@
 .xybs-input {
   width: 100%;
   background-color: transparent;
-  color: $dark-text;
-  border: 1px solid $dark-text;
+  color: inherit;
+  // border: 1px solid $dark-text;
   border-radius: 20px;
   text-align: center;
 }

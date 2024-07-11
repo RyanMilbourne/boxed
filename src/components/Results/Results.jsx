@@ -5,7 +5,7 @@ import CheckCircleOutlineRoundedIcon from "@mui/icons-material/CheckCircleOutlin
 import "./ResultsStyles.scss";
 
 const Results = () => {
-  const { boxShadows } = useContext(ControlsContext);
+  const { boxShadows, backgroundColor } = useContext(ControlsContext);
 
   const boxShadowValue = boxShadows
     .map(
@@ -30,11 +30,15 @@ const Results = () => {
   const iconStyle = {
     width: "1.5rem",
     height: "1.5rem",
+    color: backgroundColor,
     margin: "0",
     padding: "0",
   };
   return (
-    <div className="results-container">
+    <div
+      className="results-container"
+      style={{ border: `2px solid ${backgroundColor}` }}
+    >
       <div
         className={
           !copySuccess
@@ -46,7 +50,11 @@ const Results = () => {
         {copySuccess && <CheckCircleOutlineRoundedIcon style={iconStyle} />}
         {!copySuccess && <ContentCopyRoundedIcon style={iconStyle} />}
       </div>
-      <div className="results-text" ref={textRef}>
+      <div
+        className="results-text"
+        ref={textRef}
+        // style={{ color: backgroundColor }}
+      >
         box-shadow: {boxShadowValue}
       </div>
     </div>
