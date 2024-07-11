@@ -27,3 +27,14 @@ h1 {
 p {
   margin-block: 0;
 }
+
+.simple-input {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  width: 80px;
+  font-size: 16px;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}

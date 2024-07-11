@@ -125,7 +125,12 @@ const HeroBox = () => {
             onChange={handleBoxColor}
           />
         </div>
-        {boxColor}
+        <input
+          className="simple-input"
+          type="text"
+          value={boxColor}
+          onChange={handleBoxColor}
+        />
         <div
           className="color-picker-display"
           style={{
@@ -140,7 +145,12 @@ const HeroBox = () => {
             onChange={handleBackgroundColor}
           />
         </div>
-        {backgroundColor}
+        <input
+          className="simple-input"
+          type="text"
+          value={backgroundColor}
+          onChange={handleBackgroundColor}
+        />
       </div>
       <div className="hero-box-scale-container">
         <div className="scale-icon" onClick={handleScaleDecrease}>
