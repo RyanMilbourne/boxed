@@ -13,6 +13,8 @@ export const ControlsProvider = ({ children }) => {
     },
   ]);
 
+  const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
+
   const addBoxShadow = () => {
     setBoxShadows([
       ...boxShadows,
@@ -43,6 +45,24 @@ export const ControlsProvider = ({ children }) => {
     }
   };
 
+  const calculateLuminance = (hexColor) => {
+    const r = parseInt(hexColor.slice(1, 3), 16);
+    const g = parseInt(hexColor.slice(3, 5), 16);
+    const b = parseInt(hexColor.slice(5, 7), 16);
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+
+  const updateTextColor = (bgColor) => {
+    const luminance = calculateLuminance(bgColor);
+    const newTextColor = luminance > 128 ? "#000000" : "#ffffff";
+    return newTextColor;
+  };
+
+  const handleBackgroundColor = (newColor) => {
+    setBackgroundColor(newColor);
+    return updateTextColor(newColor);
+  };
+
   return (
     <ControlsContext.Provider
       value={{
@@ -50,6 +70,10 @@ export const ControlsProvider = ({ children }) => {
         addBoxShadow,
         updateBoxShadow,
         removeBoxShadow,
+        calculateLuminance,
+        updateTextColor,
+        backgroundColor,
+        handleBackgroundColor,
       }}
     >
       {children}

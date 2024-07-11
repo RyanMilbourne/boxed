@@ -9,14 +9,15 @@ const HeroBox = () => {
   const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
-  const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
   const [textColor, setTextColor] = useState("#0b090d");
   const [scale, setScale] = useState(1);
 
-  const { color, xPosition, yPosition, blurValue, spreadValue } =
-    useContext(ControlsContext);
-
-  const { boxShadows } = useContext(ControlsContext);
+  const {
+    boxShadows,
+    backgroundColor,
+    handleBackgroundColor,
+    updateTextColor,
+  } = useContext(ControlsContext);
 
   const boxShadowValue = boxShadows
     .map(
@@ -45,22 +46,9 @@ const HeroBox = () => {
     setBoxColor(e.target.value);
   };
 
-  const handleBackgroundColor = (e) => {
+  const handleBackgroundColorChange = (e) => {
     const newColor = e.target.value;
-    setBackgroundColor(newColor);
-    updateTextColor(newColor);
-  };
-
-  const calculateLuminance = (hexColor) => {
-    const r = parseInt(hexColor.slice(1, 3), 16);
-    const g = parseInt(hexColor.slice(3, 5), 16);
-    const b = parseInt(hexColor.slice(5, 7), 16);
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  };
-
-  const updateTextColor = (bgColor) => {
-    const luminance = calculateLuminance(bgColor);
-    const newTextColor = luminance > 128 ? "#000000" : "#ffffff";
+    const newTextColor = handleBackgroundColor(newColor);
     setTextColor(newTextColor);
   };
 
@@ -73,8 +61,9 @@ const HeroBox = () => {
   };
 
   useEffect(() => {
-    updateTextColor(backgroundColor);
-  }, [backgroundColor]);
+    const initialTextColor = updateTextColor(backgroundColor);
+    setTextColor(initialTextColor);
+  }, [backgroundColor, updateTextColor]);
 
   return (
     <div
@@ -151,14 +140,14 @@ const HeroBox = () => {
             className="color-picker"
             type="color"
             value={backgroundColor}
-            onChange={handleBackgroundColor}
+            onChange={handleBackgroundColorChange}
           />
         </div>
         <input
           className="simple-input"
           type="text"
           value={backgroundColor}
-          onChange={handleBackgroundColor}
+          onChange={handleBackgroundColorChange}
         />
       </div>
       <div className="hero-box-scale-container">
