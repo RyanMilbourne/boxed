@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./HeroBoxStyles.scss";
 import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
 import { ControlsContext } from "../../../hooks/ControlsContext";
@@ -7,6 +7,7 @@ const HeroBox = () => {
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
   const [backgroundColor, setBackgroundColor] = useState("#f5f5f5");
+  const [textColor, setTextColor] = useState("#0b090d");
 
   const { color, xPosition, yPosition, blurValue, spreadValue } =
     useContext(ControlsContext);
@@ -31,13 +32,32 @@ const HeroBox = () => {
   };
 
   const handleBackgroundColor = (e) => {
-    setBackgroundColor(e.target.value);
+    const newColor = e.target.value;
+    setBackgroundColor(newColor);
+    updateTextColor(newColor);
   };
+
+  const calculateLuminance = (hexColor) => {
+    const r = parseInt(hexColor.slice(1, 3), 16);
+    const g = parseInt(hexColor.slice(3, 5), 16);
+    const b = parseInt(hexColor.slice(5, 7), 16);
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+
+  const updateTextColor = (bgColor) => {
+    const luminance = calculateLuminance(bgColor);
+    const newTextColor = luminance > 128 ? "#000000" : "#ffffff";
+    setTextColor(newTextColor);
+  };
+
+  useEffect(() => {
+    updateTextColor(backgroundColor);
+  }, [backgroundColor]);
 
   return (
     <div
       className="hero-box-container"
-      style={{ backgroundColor: backgroundColor }}
+      style={{ backgroundColor: backgroundColor, color: textColor }}
     >
       <div className="hero-box" style={boxStyle}></div>
       <div className="hero-box-radius-container">
@@ -65,7 +85,10 @@ const HeroBox = () => {
           <div
             key={ratio}
             className={`aspect-ratio ${aspectRatio === ratio ? "active" : ""}`}
-            style={{ border: `1px solid ${backgroundColor}` }}
+            style={{
+              border: `1px solid ${backgroundColor}`,
+              backgroundColor: backgroundColor,
+            }}
             onClick={onRatioChange}
           >
             {ratio}
@@ -89,7 +112,7 @@ const HeroBox = () => {
           className="color-picker-display"
           style={{
             backgroundColor: backgroundColor,
-            border: "1px solid black",
+            border: `1px solid ${textColor}`,
           }}
         >
           <input
