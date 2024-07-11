@@ -76,7 +76,7 @@
   padding: 16px;
   border-radius: 12px;
   background: #33333a;
-  box-shadow: 0 6px 12px #999;
+  z-index: 1000;
 }
 
 .popover .react-colorful__saturation {
