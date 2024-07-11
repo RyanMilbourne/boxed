@@ -28,9 +28,27 @@ const Controls = ({ index }) => {
     b: 0,
     a: 1,
   });
+  const [rgbaInputValue, setRgbaInputValue] = useState("rgba(0,0,0,1)");
 
   const close = useCallback(() => toggle(false), []);
   useClickOutside(popover, close);
+
+  const rgbaStringToObject = (rgbaString) => {
+    const rgbaPattern =
+      /^rgba?\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3}),?\s*(\d?\.?\d*)?\)$/;
+    const match = rgbaString.match(rgbaPattern);
+
+    if (match) {
+      return {
+        r: parseInt(match[1], 10),
+        g: parseInt(match[2], 10),
+        b: parseInt(match[3], 10),
+        a: match[4] ? parseFloat(match[4]) : 1,
+      };
+    }
+
+    throw new Error("Invalid RGBA string");
+  };
 
   const rgbaObjectToString = (rgba) => {
     return `rgba(${rgba.r},${rgba.g},${rgba.b},${rgba.a})`;
@@ -38,10 +56,26 @@ const Controls = ({ index }) => {
 
   const handleColorChange = (newColor) => {
     setShadowColor(newColor);
+    setRgbaInputValue(rgbaObjectToString(newColor));
     updateBoxShadow(index, {
       ...shadow,
       color: rgbaObjectToString(newColor),
     });
+  };
+
+  const handleRgbaInputChange = (e) => {
+    const rgbaString = e.target.value;
+    setRgbaInputValue(rgbaString);
+    try {
+      const newColor = rgbaStringToObject(rgbaString);
+      setShadowColor(newColor);
+      updateBoxShadow(index, {
+        ...shadow,
+        color: rgbaString,
+      });
+    } catch (error) {
+      console.error("Invalid RGBA string");
+    }
   };
 
   const handleXPosition = (e) => {
@@ -83,16 +117,28 @@ const Controls = ({ index }) => {
           <RemoveCircleRoundedIcon />
         </div>
       )}
-      <div
-        className="color-picker-display"
-        style={{ backgroundColor: shadow.color }}
-        onClick={() => toggle(true)}
-      >
-        {isOpen && (
-          <div className="popover" ref={popover}>
-            <RgbaColorPicker color={shadowColor} onChange={handleColorChange} />
-          </div>
-        )}
+      <div className="xybs-position-container">
+        <div
+          className="color-picker-display"
+          style={{ backgroundColor: shadow.color }}
+          onClick={() => toggle(true)}
+        >
+          {isOpen && (
+            <>
+              <div className="popover" ref={popover}>
+                <RgbaColorPicker
+                  color={shadowColor}
+                  onChange={handleColorChange}
+                />
+                <input
+                  className="rgba-input"
+                  value={rgbaInputValue}
+                  onChange={handleRgbaInputChange}
+                />
+              </div>
+            </>
+          )}
+        </div>
       </div>
       <div className="xybs-position-container">
         <SwapHorizRoundedIcon />

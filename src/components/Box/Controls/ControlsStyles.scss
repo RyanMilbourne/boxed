@@ -58,9 +58,21 @@
   width: 100%;
   background-color: transparent;
   color: inherit;
-  // border: 1px solid $dark-text;
   border-radius: 20px;
   text-align: center;
+}
+
+.rgba-input {
+  width: 80%;
+  padding: 6px;
+  background-color: whitesmoke;
+  color: inherit;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-family: "Space Grotesk", sans-serif;
+  margin-bottom: 10px;
 }
 
 // color selector //
@@ -69,14 +81,13 @@
   top: calc(100% + 2px);
   left: 0;
   border-radius: 9px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: #33333a;
+  z-index: 1000;
 }
 
 .popover .react-colorful {
   padding: 16px;
   border-radius: 12px;
-  background: #33333a;
-  z-index: 1000;
 }
 
 .popover .react-colorful__saturation {
