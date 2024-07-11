@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const ControlsContext = createContext();
 
 export const ControlsProvider = ({ children }) => {
-  const [color, setColor] = useState("#000000");
+  const [color, setColor] = useState("rgba(0, 0, 0, 1)");
   const [xPosition, setXPosition] = useState(20);
   const [yPosition, setYPosition] = useState(20);
   const [blurValue, setBlurValue] = useState(0);

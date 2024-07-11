@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState, useCallback } from "react";
+import { HexColorPicker, RgbaColorPicker } from "react-colorful";
 import "./ControlsStyles.scss";
 import SwapHorizRoundedIcon from "@mui/icons-material/SwapHorizRounded";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import BlurOnRoundedIcon from "@mui/icons-material/BlurOnRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
+import useClickOutside from "../../../hooks/useClickOutside";
 
 const Controls = () => {
   const {
@@ -20,8 +22,21 @@ const Controls = () => {
     setSpreadValue,
   } = useContext(ControlsContext);
 
-  const handleColorChange = (e) => {
-    setColor(e.target.value);
+  const popover = useRef();
+  const [isOpen, toggle] = useState(false);
+  const [shadowColor, setShadowColor] = useState({ r: 0, g: 0, b: 0, a: 1 });
+
+  const close = useCallback(() => toggle(false), []);
+  useClickOutside(popover, close);
+
+  const rgbaObjectToString = (rgba) => {
+    return `rgba(${rgba.r},${rgba.g},${rgba.b},${rgba.a})`;
+  };
+
+  const handleColorChange = (newColor) => {
+    setShadowColor(newColor);
+    const heroColor = rgbaObjectToString(newColor);
+    setColor(heroColor);
   };
 
   const handleXPosition = (e) => {
@@ -42,13 +57,16 @@ const Controls = () => {
 
   return (
     <div className="control-option">
-      <div className="color-picker-display" style={{ backgroundColor: color }}>
-        <input
-          className="color-picker"
-          type="color"
-          value={color}
-          onChange={handleColorChange}
-        />
+      <div
+        className="color-picker-display"
+        style={{ backgroundColor: color }}
+        onClick={() => toggle(true)}
+      >
+        {isOpen && (
+          <div className="popover" ref={popover}>
+            <RgbaColorPicker color={shadowColor} onChange={handleColorChange} />
+          </div>
+        )}
       </div>
       <div className="xybs-position-container">
         <SwapHorizRoundedIcon />
