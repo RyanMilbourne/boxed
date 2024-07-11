@@ -16,11 +16,20 @@ const HeroBox = () => {
   const { color, xPosition, yPosition, blurValue, spreadValue } =
     useContext(ControlsContext);
 
+  const { boxShadows } = useContext(ControlsContext);
+
+  const boxShadowValue = boxShadows
+    .map(
+      (shadow) =>
+        `${shadow.xPosition}px ${shadow.yPosition}px ${shadow.blurValue}px ${shadow.spreadValue}px ${shadow.color}`
+    )
+    .join(", ");
+
   const boxStyle = {
     borderRadius: `${radius}px`,
     aspectRatio: aspectRatio,
     backgroundColor: boxColor,
-    boxShadow: `${xPosition}px ${yPosition}px ${blurValue}px ${spreadValue}px ${color}`,
+    boxShadow: boxShadowValue,
     transform: `scale(${scale})`,
   };
 

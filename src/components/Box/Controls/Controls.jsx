@@ -1,5 +1,11 @@
-import React, { useContext, useRef, useState, useCallback } from "react";
-import { HexColorPicker, RgbaColorPicker } from "react-colorful";
+import React, {
+  useContext,
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
+import { RgbaColorPicker } from "react-colorful";
 import "./ControlsStyles.scss";
 import SwapHorizRoundedIcon from "@mui/icons-material/SwapHorizRounded";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
@@ -8,23 +14,27 @@ import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutline
 import { ControlsContext } from "../../../hooks/ControlsContext";
 import useClickOutside from "../../../hooks/useClickOutside";
 
-const Controls = () => {
-  const {
-    color,
-    setColor,
-    xPosition,
-    setXPosition,
-    yPosition,
-    setYPosition,
-    blurValue,
-    setBlurValue,
-    spreadValue,
-    setSpreadValue,
-  } = useContext(ControlsContext);
+const Controls = ({ index }) => {
+  const { boxShadows, updateBoxShadow } = useContext(ControlsContext);
+  const shadow = boxShadows[index];
 
   const popover = useRef();
   const [isOpen, toggle] = useState(false);
-  const [shadowColor, setShadowColor] = useState({ r: 0, g: 0, b: 0, a: 1 });
+  const [shadowColor, setShadowColor] = useState({
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 1,
+  });
+
+  useEffect(() => {
+    setShadowColor({
+      r: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[1] || 0,
+      g: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[2] || 0,
+      b: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[3] || 0,
+      a: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[4] || 1,
+    });
+  }, [shadow.color]);
 
   const close = useCallback(() => toggle(false), []);
   useClickOutside(popover, close);
@@ -35,31 +45,45 @@ const Controls = () => {
 
   const handleColorChange = (newColor) => {
     setShadowColor(newColor);
-    const heroColor = rgbaObjectToString(newColor);
-    setColor(heroColor);
+    updateBoxShadow(index, {
+      ...shadow,
+      color: rgbaObjectToString(newColor),
+    });
   };
 
   const handleXPosition = (e) => {
-    setXPosition(e.target.value);
+    updateBoxShadow(index, {
+      ...shadow,
+      xPosition: e.target.value,
+    });
   };
 
   const handleYPosition = (e) => {
-    setYPosition(e.target.value);
+    updateBoxShadow(index, {
+      ...shadow,
+      yPosition: e.target.value,
+    });
   };
 
   const handleBlurChange = (e) => {
-    setBlurValue(e.target.value);
+    updateBoxShadow(index, {
+      ...shadow,
+      blurValue: e.target.value,
+    });
   };
 
   const handleSpreadChange = (e) => {
-    setSpreadValue(e.target.value);
+    updateBoxShadow(index, {
+      ...shadow,
+      spreadValue: e.target.value,
+    });
   };
 
   return (
     <div className="control-option">
       <div
         className="color-picker-display"
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: shadow.color }}
         onClick={() => toggle(true)}
       >
         {isOpen && (
@@ -75,7 +99,7 @@ const Controls = () => {
           type="range"
           min="-100"
           max="100"
-          value={xPosition}
+          value={shadow.xPosition}
           onChange={handleXPosition}
         />
         <input
@@ -83,7 +107,7 @@ const Controls = () => {
           type="number"
           min="-100"
           max="100"
-          value={xPosition}
+          value={shadow.xPosition}
           onChange={handleXPosition}
         />
       </div>
@@ -94,7 +118,7 @@ const Controls = () => {
           type="range"
           min="-100"
           max="100"
-          value={yPosition}
+          value={shadow.yPosition}
           onChange={handleYPosition}
         />
         <input
@@ -102,7 +126,7 @@ const Controls = () => {
           type="number"
           min="-100"
           max="100"
-          value={yPosition}
+          value={shadow.yPosition}
           onChange={handleYPosition}
         />
       </div>
@@ -113,7 +137,7 @@ const Controls = () => {
           type="range"
           min="0"
           max="100"
-          value={blurValue}
+          value={shadow.blurValue}
           onChange={handleBlurChange}
         />
         <input
@@ -121,7 +145,7 @@ const Controls = () => {
           type="number"
           min="0"
           max="100"
-          value={blurValue}
+          value={shadow.blurValue}
           onChange={handleBlurChange}
         />
       </div>
@@ -132,7 +156,7 @@ const Controls = () => {
           type="range"
           min="-100"
           max="100"
-          value={spreadValue}
+          value={shadow.spreadValue}
           onChange={handleSpreadChange}
         />
         <input
@@ -140,7 +164,7 @@ const Controls = () => {
           type="number"
           min="-100"
           max="100"
-          value={spreadValue}
+          value={shadow.spreadValue}
           onChange={handleSpreadChange}
         />
       </div>
