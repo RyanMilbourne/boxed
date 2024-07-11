@@ -29,15 +29,6 @@ const Controls = ({ index }) => {
     a: 1,
   });
 
-  useEffect(() => {
-    setShadowColor({
-      r: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[1] || 0,
-      g: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[2] || 0,
-      b: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[3] || 0,
-      a: shadow.color.match(/rgba\((\d+), (\d+), (\d+), (\d+)\)/)?.[4] || 1,
-    });
-  }, [shadow.color]);
-
   const close = useCallback(() => toggle(false), []);
   useClickOutside(popover, close);
 
@@ -88,7 +79,6 @@ const Controls = ({ index }) => {
           <RemoveCircleRoundedIcon />
         </div>
       )}
-
       <div
         className="color-picker-display"
         style={{ backgroundColor: shadow.color }}

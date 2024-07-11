@@ -56,7 +56,6 @@
 
 .xybs-input {
   width: 100%;
-  // padding: 6px;
   background-color: transparent;
   color: $dark-text;
   border: 1px solid $dark-text;
@@ -64,10 +63,40 @@
   text-align: center;
 }
 
+// color selector //
 .popover {
   position: absolute;
   top: calc(100% + 2px);
   left: 0;
   border-radius: 9px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.popover .react-colorful {
+  padding: 16px;
+  border-radius: 12px;
+  background: #33333a;
+  box-shadow: 0 6px 12px #999;
+}
+
+.popover .react-colorful__saturation {
+  margin: 15px 0;
+  border-radius: 5px;
+  border-bottom: none;
+}
+
+.popover .react-colorful__hue {
+  order: -1;
+}
+
+.popover .react-colorful__hue,
+.popover .react-colorful__alpha {
+  height: 14px;
+  border-radius: 5px;
+}
+
+.popover .react-colorful__hue-pointer,
+.popover .react-colorful__alpha-pointer {
+  width: 20px;
+  height: 20px;
 }
