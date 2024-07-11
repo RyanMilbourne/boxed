@@ -21,8 +21,8 @@ export const ControlsProvider = ({ children }) => {
       ...boxShadows,
       {
         color: "rgba(0, 0, 0, 1)",
-        xPosition: 20,
-        yPosition: 20,
+        xPosition: 0,
+        yPosition: 0,
         blurValue: 0,
         spreadValue: 0,
       },
