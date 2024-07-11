@@ -117,9 +117,9 @@ const Controls = ({ index }) => {
           <RemoveCircleRoundedIcon />
         </div>
       )}
-      <div className="xybs-position-container">
+      <div className="xybs-position-container color">
         <div
-          className="color-picker-display"
+          className="color-picker-display hero"
           style={{ backgroundColor: shadow.color }}
           onClick={() => toggle(true)}
         >

@@ -36,6 +36,11 @@
   position: relative;
 }
 
+.hero {
+  width: 40px;
+  height: 40px;
+}
+
 .color-picker {
   opacity: 0;
   border: 0;
@@ -52,6 +57,10 @@
   align-items: center;
   gap: 10px;
   width: 60px;
+}
+
+.color {
+  width: 40px;
 }
 
 .xybs-input {
