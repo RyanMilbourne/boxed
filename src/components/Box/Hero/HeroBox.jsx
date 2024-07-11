@@ -6,7 +6,7 @@ const HeroBox = () => {
   const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
-  const [backgroundColor, setBackgroundColor] = useState("#f5f5f5");
+  const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
   const [textColor, setTextColor] = useState("#0b090d");
 
   const { color, xPosition, yPosition, blurValue, spreadValue } =
@@ -98,7 +98,10 @@ const HeroBox = () => {
       <div className="hero-box-color-container">
         <div
           className="color-picker-display"
-          style={{ backgroundColor: boxColor }}
+          style={{
+            border: `1px solid ${textColor}`,
+            backgroundColor: boxColor,
+          }}
         >
           <input
             className="color-picker"
