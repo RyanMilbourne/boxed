@@ -34,3 +34,7 @@
   transition: all 0.25s ease;
   cursor: pointer;
 }
+
+.preset-wrapper:hover {
+  transform: scale(1.05);
+}
