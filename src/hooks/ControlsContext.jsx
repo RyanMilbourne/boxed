@@ -1,58 +1,10 @@
 import React, { createContext, useState } from "react";
+import presetsData from "../data/presetsData";
 
 export const ControlsContext = createContext();
 
 export const ControlsProvider = ({ children }) => {
-  const presets = [
-    [
-      {
-        color: "rgba(0, 0, 0, 1)",
-        xPosition: 20,
-        yPosition: 20,
-        blurValue: 0,
-        spreadValue: 3,
-        inset: "",
-      },
-    ],
-    [
-      {
-        color: "rgba(255, 0, 0, 1)",
-        xPosition: 10,
-        yPosition: 10,
-        blurValue: 0,
-        spreadValue: 3,
-        inset: "",
-      },
-      {
-        color: "rgba(0, 0, 255, 1)",
-        xPosition: -10,
-        yPosition: -10,
-        blurValue: 0,
-        spreadValue: 3,
-        inset: "",
-      },
-    ],
-    [
-      {
-        color: "rgba(1,1,1,0.3)",
-        xPosition: 5,
-        yPosition: 5,
-        blurValue: 20,
-        spreadValue: 10,
-        inset: "",
-      },
-    ],
-    [
-      {
-        color: "rgba(1,1,1,1)",
-        xPosition: 0,
-        yPosition: 0,
-        blurValue: 0,
-        spreadValue: 0,
-        inset: "",
-      },
-    ],
-  ];
+  const presets = presetsData;
 
   const [boxShadows, setBoxShadows] = useState(presets[0]);
 
