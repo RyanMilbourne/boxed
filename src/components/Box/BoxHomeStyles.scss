@@ -9,4 +9,27 @@
   border-radius: 20px;
   display: flex;
   gap: 1rem;
+  position: relative;
+}
+
+// presets
+
+.shadow-presets-container {
+  width: 40px;
+  position: absolute;
+  top: 20px;
+  left: -80px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preset-wrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.25s ease;
 }

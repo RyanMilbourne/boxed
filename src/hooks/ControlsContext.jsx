@@ -3,15 +3,53 @@ import React, { createContext, useState } from "react";
 export const ControlsContext = createContext();
 
 export const ControlsProvider = ({ children }) => {
-  const [boxShadows, setBoxShadows] = useState([
-    {
-      color: "rgba(0, 0, 0, 1)",
-      xPosition: 20,
-      yPosition: 20,
-      blurValue: 0,
-      spreadValue: 0,
-    },
-  ]);
+  const presets = [
+    [
+      {
+        color: "rgba(0, 0, 0, 1)",
+        xPosition: 20,
+        yPosition: 20,
+        blurValue: 0,
+        spreadValue: 0,
+      },
+    ],
+    [
+      {
+        color: "rgba(255, 0, 0, 1)",
+        xPosition: 10,
+        yPosition: 10,
+        blurValue: 0,
+        spreadValue: 3,
+      },
+      {
+        color: "rgba(0, 0, 255, 1)",
+        xPosition: -10,
+        yPosition: -10,
+        blurValue: 0,
+        spreadValue: 3,
+      },
+    ],
+    [
+      {
+        color: "rgba(1,1,1,0.3)",
+        xPosition: 5,
+        yPosition: 5,
+        blurValue: 20,
+        spreadValue: 10,
+      },
+    ],
+    [
+      {
+        color: "rgba(1,1,1,1)",
+        xPosition: 0,
+        yPosition: 0,
+        blurValue: 0,
+        spreadValue: 0,
+      },
+    ],
+  ];
+
+  const [boxShadows, setBoxShadows] = useState(presets[0]);
 
   const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
   const [textColor, setTextColor] = useState("#0b090d");
@@ -64,6 +102,12 @@ export const ControlsProvider = ({ children }) => {
     updateTextColor(newColor);
   };
 
+  const selectPreset = (presetIndex) => {
+    if (presetIndex >= 0 && presetIndex < presets.length) {
+      setBoxShadows(presets[presetIndex]);
+    }
+  };
+
   return (
     <ControlsContext.Provider
       value={{
@@ -76,6 +120,7 @@ export const ControlsProvider = ({ children }) => {
         backgroundColor,
         handleBackgroundColor,
         textColor,
+        selectPreset,
       }}
     >
       {children}

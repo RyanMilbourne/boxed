@@ -5,7 +5,7 @@ import { ControlsContext } from "../../../hooks/ControlsContext";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
 const ControlsHome = () => {
-  const { boxShadows, addBoxShadow, backgroundColor, textColor } =
+  const { boxShadows, addBoxShadow, backgroundColor, textColor, selectPreset } =
     useContext(ControlsContext);
 
   return (
