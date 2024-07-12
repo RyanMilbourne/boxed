@@ -101,3 +101,13 @@
 .scale-icon {
   cursor: pointer;
 }
+
+@media (max-width: 1500px) {
+  .hero-box-container {
+    height: 500px;
+    max-height: 500px;
+  }
+  .hero-box {
+    max-width: 280px;
+  }
+}
