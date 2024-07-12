@@ -1,6 +1,9 @@
 const presetsData = [
   [
     {
+      backgroundColor: "#d4fdc9",
+      heroBoxColor: "#42ff8b",
+      heroRadius: 30,
       color: "rgba(0, 0, 0, 1)",
       xPosition: 20,
       yPosition: 20,
@@ -11,6 +14,9 @@ const presetsData = [
   ],
   [
     {
+      backgroundColor: "#0a5cff",
+      heroBoxColor: "#0a5cff",
+      heroRadius: 200,
       inset: "inset",
       xPosition: 66,
       yPosition: 38,
@@ -53,6 +59,9 @@ const presetsData = [
   ],
   [
     {
+      backgroundColor: "#454545",
+      heroBoxColor: "#383838",
+      heroRadius: 20,
       inset: "",
       xPosition: 0,
       yPosition: 2.3,
@@ -151,6 +160,9 @@ const presetsData = [
   ],
   [
     {
+      backgroundColor: "#ffffff",
+      heroBoxColor: "#8f8f8f",
+      heroRadius: 20,
       color: "rgba(1,1,1,1)",
       xPosition: 0,
       yPosition: 0,

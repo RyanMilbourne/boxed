@@ -6,9 +6,7 @@ import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
 
 const HeroBox = () => {
-  const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
-  const [boxColor, setBoxColor] = useState("#42ff8b");
   const [scale, setScale] = useState(1);
 
   const {
@@ -17,6 +15,10 @@ const HeroBox = () => {
     textColor,
     handleBackgroundColor,
     updateTextColor,
+    heroBoxColor,
+    handleHeroBoxColor,
+    heroRadius,
+    handleHeroRadius,
   } = useContext(ControlsContext);
 
   const boxShadowValue = boxShadows
@@ -27,23 +29,23 @@ const HeroBox = () => {
     .join(", ");
 
   const boxStyle = {
-    borderRadius: `${radius}px`,
+    borderRadius: `${heroRadius}px`,
     aspectRatio: aspectRatio,
-    backgroundColor: boxColor,
+    backgroundColor: heroBoxColor,
     boxShadow: boxShadowValue,
     transform: `scale(${scale})`,
-  };
-
-  const onRadiusChange = (e) => {
-    setRadius(e.target.value);
   };
 
   const onRatioChange = (e) => {
     setAspectRatio(e.target.textContent);
   };
 
-  const handleBoxColor = (e) => {
-    setBoxColor(e.target.value);
+  const handleHeroBoxColorChange = (e) => {
+    handleHeroBoxColor(e.target.value);
+  };
+
+  const handleHeroRadiusChange = (e) => {
+    handleHeroRadius(e.target.value);
   };
 
   const handleBackgroundColorChange = (e) => {
@@ -76,16 +78,16 @@ const HeroBox = () => {
           min="0"
           max="200"
           className="hero-radius slider"
-          value={radius}
-          onChange={onRadiusChange}
+          value={heroRadius}
+          onChange={handleHeroRadiusChange}
         />
         <input
           className="hero-radius"
           type="number"
           min="0"
           max="200"
-          value={radius}
-          onChange={onRadiusChange}
+          value={heroRadius}
+          onChange={handleHeroRadiusChange}
         />
       </div>
       <div className="hero-box-aspect-ratio-container">
@@ -110,21 +112,21 @@ const HeroBox = () => {
           className="color-picker-display"
           style={{
             border: `1px solid ${textColor}`,
-            backgroundColor: boxColor,
+            backgroundColor: heroBoxColor,
           }}
         >
           <input
             className="color-picker"
             type="color"
-            value={boxColor}
-            onChange={handleBoxColor}
+            value={heroBoxColor}
+            onChange={handleHeroBoxColorChange}
           />
         </div>
         <input
           className="simple-input"
           type="text"
-          value={boxColor}
-          onChange={handleBoxColor}
+          value={heroBoxColor}
+          onChange={handleHeroBoxColorChange}
         />
         <div
           className="color-picker-display"

@@ -9,6 +9,8 @@ export const ControlsProvider = ({ children }) => {
   const [boxShadows, setBoxShadows] = useState(presets[0]);
 
   const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
+  const [heroBoxColor, setHeroBoxColor] = useState("#42ff8b");
+  const [heroRadius, setHeroRadius] = useState(30);
   const [textColor, setTextColor] = useState("#0b090d");
 
   const addBoxShadow = () => {
@@ -60,9 +62,29 @@ export const ControlsProvider = ({ children }) => {
     updateTextColor(newColor);
   };
 
+  const handleHeroBoxColor = (newColor) => {
+    setHeroBoxColor(newColor);
+  };
+
+  const handleHeroRadius = (newRadius) => {
+    setHeroRadius(newRadius);
+  };
+
   const selectPreset = (presetIndex) => {
     if (presetIndex >= 0 && presetIndex < presets.length) {
-      setBoxShadows(presets[presetIndex]);
+      const selectedPreset = presets[presetIndex];
+
+      const newBackgroundColor =
+        selectedPreset[0]?.backgroundColor || "#d4fdc9";
+
+      const newHeroBoxColor = selectedPreset[0]?.heroBoxColor || "#42ff8b";
+
+      const newHeroRadius = selectedPreset[0]?.heroRadius || 30;
+
+      setBoxShadows(selectedPreset);
+      handleBackgroundColor(newBackgroundColor);
+      handleHeroBoxColor(newHeroBoxColor);
+      handleHeroRadius(newHeroRadius);
     }
   };
 
@@ -79,6 +101,10 @@ export const ControlsProvider = ({ children }) => {
         handleBackgroundColor,
         textColor,
         selectPreset,
+        heroBoxColor,
+        handleHeroBoxColor,
+        heroRadius,
+        handleHeroRadius,
       }}
     >
       {children}

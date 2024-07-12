@@ -128,7 +128,10 @@ const Controls = ({ index }) => {
       <div className="xybs-position-container color">
         <div
           className="color-picker-display hero"
-          style={{ backgroundColor: shadow.color }}
+          style={{
+            backgroundColor: shadow.color,
+            border: `1px solid ${textColor}`,
+          }}
           onClick={() => toggle(true)}
         >
           {isOpen && (
