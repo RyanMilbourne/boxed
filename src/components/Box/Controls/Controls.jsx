@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useRef,
-  useState,
-  useCallback,
-  useEffect,
-} from "react";
+import React, { useContext, useRef, useState, useCallback } from "react";
 import { RgbaColorPicker } from "react-colorful";
 import "./ControlsStyles.scss";
 import SwapHorizRoundedIcon from "@mui/icons-material/SwapHorizRounded";
@@ -12,6 +6,8 @@ import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import BlurOnRoundedIcon from "@mui/icons-material/BlurOnRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
+import ZoomInMapRoundedIcon from "@mui/icons-material/ZoomInMapRounded";
+import ZoomOutMapRoundedIcon from "@mui/icons-material/ZoomOutMapRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
 import useClickOutside from "../../../hooks/useClickOutside";
 
@@ -106,8 +102,20 @@ const Controls = ({ index }) => {
     });
   };
 
+  const handleInset = (value) => {
+    updateBoxShadow(index, {
+      ...shadow,
+      inset: value,
+    });
+  };
+
   const dynamicBorder = {
     border: `1px solid ${textColor}`,
+  };
+
+  const smallIcon = {
+    width: "1.1rem",
+    height: "1.1rem",
   };
 
   return (
@@ -219,6 +227,24 @@ const Controls = ({ index }) => {
           value={shadow.spreadValue}
           onChange={handleSpreadChange}
         />
+      </div>
+      <div className="xybs-position-container">
+        <div
+          className={`inset-outset-container ${
+            shadow.inset === "inset" ? "selected" : ""
+          }`}
+          onClick={() => handleInset("inset")}
+        >
+          <ZoomInMapRoundedIcon style={smallIcon} />
+        </div>
+        <div
+          className={`inset-outset-container ${
+            shadow.inset === "" ? "selected" : ""
+          }`}
+          onClick={() => handleInset("")}
+        >
+          <ZoomOutMapRoundedIcon style={smallIcon} />
+        </div>
       </div>
     </div>
   );

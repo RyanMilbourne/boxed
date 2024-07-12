@@ -10,7 +10,8 @@ export const ControlsProvider = ({ children }) => {
         xPosition: 20,
         yPosition: 20,
         blurValue: 0,
-        spreadValue: 0,
+        spreadValue: 3,
+        inset: "",
       },
     ],
     [
@@ -20,6 +21,7 @@ export const ControlsProvider = ({ children }) => {
         yPosition: 10,
         blurValue: 0,
         spreadValue: 3,
+        inset: "",
       },
       {
         color: "rgba(0, 0, 255, 1)",
@@ -27,6 +29,7 @@ export const ControlsProvider = ({ children }) => {
         yPosition: -10,
         blurValue: 0,
         spreadValue: 3,
+        inset: "",
       },
     ],
     [
@@ -36,6 +39,7 @@ export const ControlsProvider = ({ children }) => {
         yPosition: 5,
         blurValue: 20,
         spreadValue: 10,
+        inset: "",
       },
     ],
     [
@@ -45,6 +49,7 @@ export const ControlsProvider = ({ children }) => {
         yPosition: 0,
         blurValue: 0,
         spreadValue: 0,
+        inset: "",
       },
     ],
   ];
@@ -63,6 +68,7 @@ export const ControlsProvider = ({ children }) => {
         yPosition: 0,
         blurValue: 0,
         spreadValue: 0,
+        inset: "",
       },
     ]);
   };

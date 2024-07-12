@@ -10,7 +10,9 @@ const Results = () => {
   const boxShadowValue = boxShadows
     .map(
       (shadow) =>
-        `${shadow.xPosition}px ${shadow.yPosition}px ${shadow.blurValue}px ${shadow.spreadValue}px ${shadow.color}`
+        `${shadow.inset ? shadow.inset + " " : ""}${shadow.xPosition}px ${
+          shadow.yPosition
+        }px ${shadow.blurValue}px ${shadow.spreadValue}px ${shadow.color}`
     )
     .join(", ");
 

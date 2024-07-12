@@ -9,7 +9,6 @@ const HeroBox = () => {
   const [radius, setRadius] = useState(30);
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [boxColor, setBoxColor] = useState("#42ff8b");
-  // const [textColor, setTextColor] = useState("#0b090d");
   const [scale, setScale] = useState(1);
 
   const {
@@ -23,7 +22,7 @@ const HeroBox = () => {
   const boxShadowValue = boxShadows
     .map(
       (shadow) =>
-        `${shadow.xPosition}px ${shadow.yPosition}px ${shadow.blurValue}px ${shadow.spreadValue}px ${shadow.color}`
+        `${shadow.inset} ${shadow.xPosition}px ${shadow.yPosition}px ${shadow.blurValue}px ${shadow.spreadValue}px ${shadow.color}`
     )
     .join(", ");
 

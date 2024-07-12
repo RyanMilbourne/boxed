@@ -120,3 +120,24 @@
   width: 20px;
   height: 20px;
 }
+
+.inset-outset-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 6px;
+  box-shadow: $neomorph2;
+  cursor: pointer;
+}
+
+.selected {
+  box-shadow: $neomorph;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 75%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
