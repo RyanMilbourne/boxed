@@ -195,6 +195,27 @@ const presetsData = [
       color: "#ffffff09",
     },
   ],
+  [
+    {
+      backgroundColor: "#e0e0e0",
+      heroBoxColor: "#e0e0e0",
+      heroRadius: 60,
+      inset: "inset",
+      xPosition: 11,
+      yPosition: 11,
+      blurValue: 15,
+      spreadValue: 0,
+      color: "#cacaca",
+    },
+    {
+      inset: "inset",
+      xPosition: -11,
+      yPosition: -11,
+      blurValue: 15,
+      spreadValue: 0,
+      color: "#f6f6f6",
+    },
+  ],
 ];
 
 export default presetsData;

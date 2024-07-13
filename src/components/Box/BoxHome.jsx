@@ -45,6 +45,13 @@ const BoxHome = () => {
         >
           4
         </div>
+        <div
+          className="preset-wrapper"
+          style={presetStyle}
+          onClick={() => selectPreset(4)}
+        >
+          5
+        </div>
       </div>
     </div>
   );
