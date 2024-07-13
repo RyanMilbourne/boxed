@@ -59,9 +59,9 @@ const presetsData = [
   ],
   [
     {
-      backgroundColor: "#454545",
-      heroBoxColor: "#383838",
-      heroRadius: 20,
+      backgroundColor: "#c2c2c2",
+      heroBoxColor: "#d6d6d6",
+      heroRadius: 10,
       inset: "",
       xPosition: 0,
       yPosition: 2.3,
