@@ -8,6 +8,7 @@
   padding: 10px 20px;
   position: relative;
   box-shadow: $input-shadow-1;
+  animation: slideIn 0.5s ease;
 }
 
 .remove-button {
