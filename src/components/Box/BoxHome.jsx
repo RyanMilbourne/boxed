@@ -3,9 +3,10 @@ import "./BoxHomeStyles.scss";
 import HeroBox from "./Hero/HeroBox";
 import ControlsHome from "./Controls/ControlsHome";
 import { ControlsContext } from "../../hooks/ControlsContext";
+import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 
 const BoxHome = () => {
-  const { selectPreset, backgroundColor, textColor } =
+  const { selectPreset, backgroundColor, textColor, addBoxShadow } =
     useContext(ControlsContext);
 
   const presetStyle = {
@@ -14,6 +15,15 @@ const BoxHome = () => {
   };
   return (
     <div className="box-home-container">
+      <div
+        className="controls-add-container"
+        onClick={addBoxShadow}
+        style={{ color: textColor }}
+      >
+        <button className="add-shadow-layer">
+          <AddCircleRoundedIcon style={{ width: "35px", height: "35px" }} />
+        </button>
+      </div>
       <ControlsHome />
       <HeroBox />
       <div className="shadow-presets-container">

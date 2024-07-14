@@ -11,6 +11,35 @@
   position: relative;
 }
 
+// add shadow
+.controls-add-container {
+  border-radius: 20px 0px 20px 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.add-shadow-layer {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 // presets
 
 .shadow-presets-container {
