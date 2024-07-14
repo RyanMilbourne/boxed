@@ -53,7 +53,7 @@ const Results = () => {
         {!copySuccess && <ContentCopyRoundedIcon style={iconStyle} />}
       </div>
       <div className="results-text" ref={textRef}>
-        box-shadow: {boxShadowValue}
+        box-shadow: {boxShadowValue};
       </div>
     </div>
   );
