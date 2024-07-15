@@ -3,11 +3,17 @@ import "./HeroBoxStyles.scss";
 import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
+import TitleRoundedIcon from "@mui/icons-material/TitleRounded";
+import ImageRoundedIcon from "@mui/icons-material/ImageRounded";
+import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
+import boxFillerData from "../../../data/boxFillerData";
 
 const HeroBox = () => {
   const [aspectRatio, setAspectRatio] = useState("1/1");
   const [scale, setScale] = useState(1);
+  const [boxDisplay, setBoxDisplay] = useState(0);
+  const [image, setImage] = useState(boxFillerData.image);
 
   const {
     boxShadows,
@@ -34,6 +40,17 @@ const HeroBox = () => {
     backgroundColor: heroBoxColor,
     boxShadow: boxShadowValue,
     transform: `scale(${scale})`,
+  };
+
+  const boxStyleImage = {
+    borderRadius: `${heroRadius}px`,
+    aspectRatio: aspectRatio,
+    backgroundColor: heroBoxColor,
+    boxShadow: boxShadowValue,
+    transform: `scale(${scale})`,
+    backgroundImage: `url('${image}')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   };
 
   const onRatioChange = (e) => {
@@ -69,7 +86,51 @@ const HeroBox = () => {
       className="hero-box-container"
       style={{ backgroundColor: backgroundColor, color: textColor }}
     >
-      <div className="hero-box" style={boxStyle}></div>
+      <div
+        className="hero-box"
+        style={boxDisplay <= 1 ? boxStyle : boxStyleImage}
+      >
+        {boxDisplay === 1 && (
+          <div className={`box-display ${heroRadius > 70 ? "adjusted" : ""}`}>
+            {boxFillerData.text}
+          </div>
+        )}
+      </div>
+      <div className="hero-box-content-container">
+        <div
+          className="content-option"
+          onClick={() => setBoxDisplay(0)}
+          style={{
+            backgroundColor: heroBoxColor,
+            color: textColor,
+            border: `1px solid ${textColor}`,
+          }}
+        >
+          <CheckBoxOutlineBlankRoundedIcon />
+        </div>
+        <div
+          className="content-option"
+          onClick={() => setBoxDisplay(1)}
+          style={{
+            backgroundColor: heroBoxColor,
+            color: textColor,
+            border: `1px solid ${textColor}`,
+          }}
+        >
+          <TitleRoundedIcon />
+        </div>
+        <div
+          className="content-option"
+          onClick={() => setBoxDisplay(2)}
+          style={{
+            backgroundColor: heroBoxColor,
+            color: textColor,
+            border: `1px solid ${textColor}`,
+          }}
+        >
+          <ImageRoundedIcon />
+        </div>
+      </div>
       <div className="hero-box-radius-container">
         <RoundedCornerIcon />
         <span>border-radius</span>
