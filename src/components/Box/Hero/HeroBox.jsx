@@ -81,6 +81,11 @@ const HeroBox = () => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
 
+  const iconStyle = {
+    width: "1rem",
+    height: "1rem",
+  };
+
   return (
     <div
       className="hero-box-container"
@@ -106,7 +111,7 @@ const HeroBox = () => {
             border: `1px solid ${textColor}`,
           }}
         >
-          <CheckBoxOutlineBlankRoundedIcon />
+          <CheckBoxOutlineBlankRoundedIcon style={iconStyle} />
         </div>
         <div
           className="content-option"
@@ -117,7 +122,7 @@ const HeroBox = () => {
             border: `1px solid ${textColor}`,
           }}
         >
-          <TitleRoundedIcon />
+          <TitleRoundedIcon style={iconStyle} />
         </div>
         <div
           className="content-option"
@@ -128,7 +133,7 @@ const HeroBox = () => {
             border: `1px solid ${textColor}`,
           }}
         >
-          <ImageRoundedIcon />
+          <ImageRoundedIcon style={iconStyle} />
         </div>
       </div>
       <div className="hero-box-radius-container">
