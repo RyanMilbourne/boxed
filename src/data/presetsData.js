@@ -1,10 +1,10 @@
 const presetsData = [
   [
     {
-      backgroundColor: "#d4fdc9",
-      heroBoxColor: "#42ff8b",
+      backgroundColor: "#fff480",
+      heroBoxColor: "#ffd500",
       heroRadius: 30,
-      color: "rgba(0, 0, 0, 1)",
+      color: "rgba(255,122,0,1)",
       xPosition: 20,
       yPosition: 20,
       blurValue: 0,

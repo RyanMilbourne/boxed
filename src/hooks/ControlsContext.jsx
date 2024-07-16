@@ -8,8 +8,8 @@ export const ControlsProvider = ({ children }) => {
 
   const [boxShadows, setBoxShadows] = useState(presets[0]);
 
-  const [backgroundColor, setBackgroundColor] = useState("#d4fdc9");
-  const [heroBoxColor, setHeroBoxColor] = useState("#42ff8b");
+  const [backgroundColor, setBackgroundColor] = useState("#fff480");
+  const [heroBoxColor, setHeroBoxColor] = useState("#ffd500");
   const [heroRadius, setHeroRadius] = useState(30);
   const [textColor, setTextColor] = useState("#0b090d");
 
