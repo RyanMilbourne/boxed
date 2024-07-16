@@ -14,6 +14,7 @@ const HeroBox = () => {
   const [scale, setScale] = useState(1);
   const [boxDisplay, setBoxDisplay] = useState(0);
   const [image, setImage] = useState(boxFillerData.image);
+  const [imageURL, setImageURL] = useState(false);
 
   const {
     boxShadows,
@@ -77,6 +78,14 @@ const HeroBox = () => {
     setScale((prevScale) => Math.max(prevScale - 0.1, 0.1));
   };
 
+  const handleImageChange = (e) => {
+    setImage(e.target.value);
+  };
+
+  const toggleImageURL = () => {
+    setImageURL((prev) => !prev);
+  };
+
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -84,6 +93,11 @@ const HeroBox = () => {
   const iconStyle = {
     width: "1rem",
     height: "1rem",
+  };
+
+  const iconStyle2 = {
+    width: "1.25rem",
+    height: "1.25rem",
   };
 
   return (
@@ -106,7 +120,6 @@ const HeroBox = () => {
           className="content-option"
           onClick={() => setBoxDisplay(0)}
           style={{
-            backgroundColor: heroBoxColor,
             color: textColor,
             border: `1px solid ${textColor}`,
           }}
@@ -117,23 +130,39 @@ const HeroBox = () => {
           className="content-option"
           onClick={() => setBoxDisplay(1)}
           style={{
-            backgroundColor: heroBoxColor,
             color: textColor,
             border: `1px solid ${textColor}`,
           }}
         >
           <TitleRoundedIcon style={iconStyle} />
         </div>
-        <div
-          className="content-option"
-          onClick={() => setBoxDisplay(2)}
-          style={{
-            backgroundColor: heroBoxColor,
-            color: textColor,
-            border: `1px solid ${textColor}`,
-          }}
-        >
-          <ImageRoundedIcon style={iconStyle} />
+        <div className="content-option-wrapper">
+          <div
+            className="content-option"
+            onClick={() => setBoxDisplay(2)}
+            style={{
+              color: textColor,
+              border: `1px solid ${textColor}`,
+            }}
+          >
+            <ImageRoundedIcon style={iconStyle} />
+            <div className="toggle-image-url" onClick={toggleImageURL}>
+              {imageURL && <RemoveCircleRoundedIcon style={iconStyle2} />}
+              {!imageURL && <AddCircleRoundedIcon style={iconStyle2} />}
+            </div>
+          </div>
+
+          {imageURL && (
+            <input
+              className="image-input"
+              value={image}
+              onChange={handleImageChange}
+              style={{
+                color: textColor,
+                border: `1px solid ${textColor}`,
+              }}
+            />
+          )}
         </div>
       </div>
       <div className="hero-box-radius-container">
