@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./ControlsHomeStyles.scss";
 import Controls from "./Controls";
 import { ControlsContext } from "../../../hooks/ControlsContext";
+import AddShadowButton from "./AddShadowButton";
 
 const ControlsHome = () => {
   const { boxShadows, backgroundColor, textColor, selectPreset } =
@@ -19,6 +20,7 @@ const ControlsHome = () => {
             {boxShadows.map((_, index) => (
               <Controls key={index} index={index} />
             ))}
+            <AddShadowButton />
           </form>
         </div>
       </div>
