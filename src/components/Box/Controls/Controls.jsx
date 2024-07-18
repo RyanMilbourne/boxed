@@ -131,6 +131,7 @@ const Controls = ({ index }) => {
           style={{
             backgroundColor: shadow.color,
             border: `1px solid ${textColor}`,
+            color: "black",
           }}
           onClick={() => toggle(true)}
         >
