@@ -4,6 +4,8 @@ import HeroBox from "./Hero/HeroBox";
 import ControlsHome from "./Controls/ControlsHome";
 import { ControlsContext } from "../../hooks/ControlsContext";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+import AutoFixHighRoundedIcon from "@mui/icons-material/AutoFixHighRounded";
 
 const BoxHome = () => {
   const { selectPreset, backgroundColor, textColor, addBoxShadow } =
@@ -27,6 +29,9 @@ const BoxHome = () => {
       <ControlsHome />
       <HeroBox />
       <div className="shadow-presets-container">
+        <div className="preset-menu-wrapper">
+          <AutoFixHighRoundedIcon />
+        </div>
         <div
           className="preset-wrapper"
           style={presetStyle}
