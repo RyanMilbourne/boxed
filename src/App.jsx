@@ -8,21 +8,15 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="main-container">
       <Navbar />
       <div className="app-container">
         <div className="app-wrapper">
-          {/* <div className="app-title">
-          <h1>boxed</h1>
-        </div>
-        <div className="app-description">
-          <p>a playful way to visualize box-shadows</p>
-        </div> */}
           <BoxHome />
           <Results />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

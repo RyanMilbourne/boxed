@@ -21,6 +21,11 @@
   gap: 2rem;
 }
 
-.app-description {
-  margin-top: -2rem;
+.main-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 }
