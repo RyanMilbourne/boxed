@@ -8,6 +8,7 @@ import ImageRoundedIcon from "@mui/icons-material/ImageRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
 import boxFillerData from "../../../data/boxFillerData";
+import HeroText from "./HeroContent/HeroText";
 
 const HeroBox = () => {
   const [aspectRatio, setAspectRatio] = useState("1/1");
@@ -15,7 +16,6 @@ const HeroBox = () => {
   const [boxDisplay, setBoxDisplay] = useState(0);
   const [image, setImage] = useState(boxFillerData.image);
   const [imageURL, setImageURL] = useState(false);
-  const [textData, setTextData] = useState(boxFillerData.text);
 
   const {
     boxShadows,
@@ -87,10 +87,6 @@ const HeroBox = () => {
     setImageURL((prev) => !prev);
   };
 
-  const handleTextChange = (e) => {
-    setTextData(e.target.value);
-  };
-
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -114,17 +110,7 @@ const HeroBox = () => {
         className="hero-box"
         style={boxDisplay <= 1 ? boxStyle : boxStyleImage}
       >
-        {boxDisplay === 1 && (
-          <div className={`box-display ${heroRadius > 70 ? "adjusted" : ""}`}>
-            <textarea
-              className="hero-box-text-input"
-              value={textData}
-              onChange={handleTextChange}
-              spellCheck="false"
-              style={{ color: textColor }}
-            />
-          </div>
-        )}
+        {boxDisplay === 1 && <HeroText />}
       </div>
       <div className="hero-box-content-container">
         <div
