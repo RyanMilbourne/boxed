@@ -15,6 +15,7 @@ const HeroBox = () => {
   const [boxDisplay, setBoxDisplay] = useState(0);
   const [image, setImage] = useState(boxFillerData.image);
   const [imageURL, setImageURL] = useState(false);
+  const [textData, setTextData] = useState(boxFillerData.text);
 
   const {
     boxShadows,
@@ -86,6 +87,10 @@ const HeroBox = () => {
     setImageURL((prev) => !prev);
   };
 
+  const handleTextChange = (e) => {
+    setTextData(e.target.value);
+  };
+
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -111,7 +116,13 @@ const HeroBox = () => {
       >
         {boxDisplay === 1 && (
           <div className={`box-display ${heroRadius > 70 ? "adjusted" : ""}`}>
-            {boxFillerData.text}
+            <textarea
+              className="hero-box-text-input"
+              value={textData}
+              onChange={handleTextChange}
+              spellCheck="false"
+              style={{ color: textColor }}
+            />
           </div>
         )}
       </div>
