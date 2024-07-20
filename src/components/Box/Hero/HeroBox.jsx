@@ -28,6 +28,7 @@ const HeroBox = () => {
   const [textAlign, setTextAlign] = useState("justify");
   const [verticalAlign, setVerticalAlign] = useState("flex-start");
   const [textSize, setTextSize] = useState(16);
+  const [textWeight, setTextWeight] = useState(400);
 
   const {
     boxShadows,
@@ -121,6 +122,10 @@ const HeroBox = () => {
     setTextSize(e.target.value);
   };
 
+  const handleTextWeight = (e) => {
+    setTextWeight(e.target.value);
+  };
+
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -150,6 +155,7 @@ const HeroBox = () => {
             verticalAlign={verticalAlign}
             customTextColor={customTextColor}
             textSize={textSize}
+            textWeight={textWeight}
           />
         )}
       </div>
@@ -245,6 +251,22 @@ const HeroBox = () => {
                   value={textSize}
                   onChange={handleTextSize}
                 />
+                <select
+                  name="fontWeight"
+                  id="fontWeight"
+                  className="text-weight-input"
+                  onChange={handleTextWeight}
+                >
+                  <option value="100">100</option>
+                  <option value="200">200</option>
+                  <option value="300">300</option>
+                  <option value="400" selected>
+                    400
+                  </option>
+                  <option value="500">500</option>
+                  <option value="600">600</option>
+                  <option value="700">700</option>
+                </select>
               </div>
             </div>
           )}

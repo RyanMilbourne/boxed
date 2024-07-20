@@ -233,10 +233,24 @@
   padding: 0;
   margin: 0;
   border: 1px solid #26232a;
-  width: 40px;
+  width: 60px;
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.text-weight-input {
+  background-color: transparent;
+  color: black;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #26232a;
+  width: 60px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
   text-align: center;
   border-radius: 4px;
 }
