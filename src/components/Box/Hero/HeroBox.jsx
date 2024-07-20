@@ -27,6 +27,7 @@ const HeroBox = () => {
   const [textSettings, setTextSettings] = useState(false);
   const [textAlign, setTextAlign] = useState("justify");
   const [verticalAlign, setVerticalAlign] = useState("flex-start");
+  const [textSize, setTextSize] = useState(16);
 
   const {
     boxShadows,
@@ -39,6 +40,8 @@ const HeroBox = () => {
     heroRadius,
     handleHeroRadius,
   } = useContext(ControlsContext);
+
+  const [customTextColor, setCustomTextColor] = useState(textColor);
 
   const boxShadowValue = boxShadows
     .map(
@@ -110,6 +113,14 @@ const HeroBox = () => {
     setVerticalAlign(value);
   };
 
+  const handleCustomTextColor = (e) => {
+    setCustomTextColor(e.target.value);
+  };
+
+  const handleTextSize = (e) => {
+    setTextSize(e.target.value);
+  };
+
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -134,7 +145,12 @@ const HeroBox = () => {
         style={boxDisplay <= 1 ? boxStyle : boxStyleImage}
       >
         {boxDisplay === 1 && (
-          <HeroText textAlign={textAlign} verticalAlign={verticalAlign} />
+          <HeroText
+            textAlign={textAlign}
+            verticalAlign={verticalAlign}
+            customTextColor={customTextColor}
+            textSize={textSize}
+          />
         )}
       </div>
       <div className="hero-box-content-container">
@@ -210,6 +226,25 @@ const HeroBox = () => {
                 >
                   <VerticalAlignBottomRoundedIcon style={iconStyle2} />
                 </button>
+              </div>
+              <div className="text-align-wrapper">
+                <div
+                  className="color-picker-display text-color"
+                  style={{ backgroundColor: customTextColor }}
+                >
+                  <input
+                    className="color-picker"
+                    type="color"
+                    onChange={handleCustomTextColor}
+                  />
+                </div>
+                <input
+                  className="text-size-input"
+                  type="number"
+                  min="0"
+                  value={textSize}
+                  onChange={handleTextSize}
+                />
               </div>
             </div>
           )}

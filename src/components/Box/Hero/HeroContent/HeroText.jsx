@@ -2,11 +2,9 @@ import React, { useState, useContext, useRef } from "react";
 import { ControlsContext } from "../../../../hooks/ControlsContext";
 import boxFillerData from "../../../../data/boxFillerData";
 
-const HeroText = ({ textAlign, verticalAlign }) => {
+const HeroText = ({ textAlign, verticalAlign, customTextColor, textSize }) => {
   const [textData, setTextData] = useState(boxFillerData.text);
   const textareaRef = useRef(null);
-
-  const { textColor } = useContext(ControlsContext);
 
   const handleTextChange = (e) => {
     setTextData(e.target.value);
@@ -27,7 +25,11 @@ const HeroText = ({ textAlign, verticalAlign }) => {
         value={textData}
         onChange={handleTextChange}
         spellCheck="false"
-        style={{ color: textColor, textAlign: textAlign }}
+        style={{
+          color: customTextColor,
+          textAlign: textAlign,
+          fontSize: `${textSize}px`,
+        }}
       />
     </div>
   );
