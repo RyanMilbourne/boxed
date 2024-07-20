@@ -6,6 +6,14 @@ import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
 import TitleRoundedIcon from "@mui/icons-material/TitleRounded";
 import ImageRoundedIcon from "@mui/icons-material/ImageRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
+import BuildCircleRoundedIcon from "@mui/icons-material/BuildCircleRounded";
+import FormatAlignLeftRoundedIcon from "@mui/icons-material/FormatAlignLeftRounded";
+import FormatAlignCenterRoundedIcon from "@mui/icons-material/FormatAlignCenterRounded";
+import FormatAlignRightRoundedIcon from "@mui/icons-material/FormatAlignRightRounded";
+import FormatAlignJustifyRoundedIcon from "@mui/icons-material/FormatAlignJustifyRounded";
+import VerticalAlignTopRoundedIcon from "@mui/icons-material/VerticalAlignTopRounded";
+import VerticalAlignCenterRoundedIcon from "@mui/icons-material/VerticalAlignCenterRounded";
+import VerticalAlignBottomRoundedIcon from "@mui/icons-material/VerticalAlignBottomRounded";
 import { ControlsContext } from "../../../hooks/ControlsContext";
 import boxFillerData from "../../../data/boxFillerData";
 import HeroText from "./HeroContent/HeroText";
@@ -16,6 +24,9 @@ const HeroBox = () => {
   const [boxDisplay, setBoxDisplay] = useState(0);
   const [image, setImage] = useState(boxFillerData.image);
   const [imageURL, setImageURL] = useState(false);
+  const [textSettings, setTextSettings] = useState(false);
+  const [textAlign, setTextAlign] = useState("justify");
+  const [verticalAlign, setVerticalAlign] = useState("flex-start");
 
   const {
     boxShadows,
@@ -87,6 +98,18 @@ const HeroBox = () => {
     setImageURL((prev) => !prev);
   };
 
+  const toggleTextSettings = () => {
+    setTextSettings((prev) => !prev);
+  };
+
+  const handleTextAlign = (value) => {
+    setTextAlign(value);
+  };
+
+  const handleVerticalAlign = (value) => {
+    setVerticalAlign(value);
+  };
+
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -110,7 +133,9 @@ const HeroBox = () => {
         className="hero-box"
         style={boxDisplay <= 1 ? boxStyle : boxStyleImage}
       >
-        {boxDisplay === 1 && <HeroText />}
+        {boxDisplay === 1 && (
+          <HeroText textAlign={textAlign} verticalAlign={verticalAlign} />
+        )}
       </div>
       <div className="hero-box-content-container">
         <div
@@ -123,15 +148,71 @@ const HeroBox = () => {
         >
           <CheckBoxOutlineBlankRoundedIcon style={iconStyle} />
         </div>
-        <div
-          className="content-option"
-          onClick={() => setBoxDisplay(1)}
-          style={{
-            color: textColor,
-            border: `1px solid ${textColor}`,
-          }}
-        >
-          <TitleRoundedIcon style={iconStyle} />
+        <div className="content-option-wrapper">
+          <div
+            className="content-option"
+            onClick={() => setBoxDisplay(1)}
+            style={{
+              color: textColor,
+              border: `1px solid ${textColor}`,
+            }}
+          >
+            <TitleRoundedIcon style={iconStyle} />
+            <div className="toggle-text-settings" onClick={toggleTextSettings}>
+              {textSettings && <RemoveCircleRoundedIcon style={iconStyle2} />}
+              {!textSettings && <BuildCircleRoundedIcon style={iconStyle2} />}
+            </div>
+          </div>
+          {textSettings && (
+            <div className="text-settings-wrapper">
+              <div className="text-align-wrapper">
+                <button
+                  className="text-align-button"
+                  onClick={() => handleTextAlign("left")}
+                >
+                  <FormatAlignLeftRoundedIcon style={iconStyle2} />
+                </button>
+                <button
+                  className="text-align-button"
+                  onClick={() => handleTextAlign("center")}
+                >
+                  <FormatAlignCenterRoundedIcon style={iconStyle2} />
+                </button>
+                <button
+                  className="text-align-button"
+                  onClick={() => handleTextAlign("right")}
+                >
+                  <FormatAlignRightRoundedIcon style={iconStyle2} />
+                </button>
+                <button
+                  className="text-align-button"
+                  onClick={() => handleTextAlign("justify")}
+                >
+                  <FormatAlignJustifyRoundedIcon style={iconStyle2} />
+                </button>
+              </div>
+              <div className="text-align-wrapper">
+                <button
+                  className="text-align-button"
+                  onClick={() => handleVerticalAlign("flex-start")}
+                >
+                  <VerticalAlignTopRoundedIcon style={iconStyle2} />
+                </button>
+                <button
+                  className="text-align-button"
+                  onClick={() => handleVerticalAlign("center")}
+                >
+                  <VerticalAlignCenterRoundedIcon style={iconStyle2} />
+                </button>
+                <button
+                  className="text-align-button"
+                  onClick={() => handleVerticalAlign("flex-end")}
+                >
+                  <VerticalAlignBottomRoundedIcon style={iconStyle2} />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         <div className="content-option-wrapper">
           <div
