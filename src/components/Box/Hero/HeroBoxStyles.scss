@@ -21,11 +21,8 @@
 
 .hero-box-radius-container {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 10px 20px;
-  backdrop-filter: invert(0.05);
-  border-radius: 0 20px;
+  top: 10px;
+  right: 10px;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -36,8 +33,7 @@
   width: 40px;
   padding: 10px;
   border-radius: 20px;
-  background-color: whitesmoke;
-  color: $dark-text;
+  background-color: transparent;
   outline: none;
   border: none;
 }

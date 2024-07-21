@@ -221,6 +221,7 @@ const HeroBox = () => {
           max="200"
           value={heroRadius}
           onChange={handleHeroRadiusChange}
+          style={{ border: `1px solid ${textColor}`, color: textColor }}
         />
       </div>
       <div className="hero-box-aspect-ratio-container">
