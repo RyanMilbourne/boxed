@@ -148,33 +148,6 @@ const HeroBox = () => {
         <div className="content-option-wrapper">
           <div
             className="content-option"
-            onClick={() => setBoxDisplay(1)}
-            style={{
-              color: textColor,
-              border: `1px solid ${textColor}`,
-            }}
-          >
-            <TitleRoundedIcon style={iconStyle} />
-            <div className="toggle-text-settings" onClick={toggleTextSettings}>
-              {textSettings && <RemoveCircleRoundedIcon style={iconStyle2} />}
-              {!textSettings && <BuildCircleRoundedIcon style={iconStyle2} />}
-            </div>
-          </div>
-          {textSettings && (
-            <HeroTextControls
-              setTextAlign={setTextAlign}
-              setVerticalAlign={setVerticalAlign}
-              setTextWeight={setTextWeight}
-              textSize={textSize}
-              setTextSize={setTextSize}
-              customTextColor={customTextColor}
-              setCustomTextColor={setCustomTextColor}
-            />
-          )}
-        </div>
-        <div className="content-option-wrapper">
-          <div
-            className="content-option"
             onClick={() => setBoxDisplay(2)}
             style={{
               color: textColor,
@@ -197,6 +170,35 @@ const HeroBox = () => {
                 color: textColor,
                 border: `1px solid ${textColor}`,
               }}
+            />
+          )}
+        </div>
+        <div className="content-option-wrapper">
+          <div
+            className="content-option"
+            onClick={() => setBoxDisplay(1)}
+            style={{
+              color: textColor,
+              border: `1px solid ${textColor}`,
+            }}
+          >
+            <TitleRoundedIcon style={iconStyle} />
+            <div className="toggle-text-settings" onClick={toggleTextSettings}>
+              {textSettings && <RemoveCircleRoundedIcon style={iconStyle2} />}
+              {!textSettings && <BuildCircleRoundedIcon style={iconStyle2} />}
+            </div>
+          </div>
+          {textSettings && (
+            <HeroTextControls
+              setTextAlign={setTextAlign}
+              setVerticalAlign={setVerticalAlign}
+              setTextWeight={setTextWeight}
+              textSize={textSize}
+              setTextSize={setTextSize}
+              customTextColor={customTextColor}
+              setCustomTextColor={setCustomTextColor}
+              backgroundColor={heroBoxColor}
+              borderColor={textColor}
             />
           )}
         </div>

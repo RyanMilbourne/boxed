@@ -129,7 +129,7 @@
 
 .hero-box-content-container {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   left: 10px;
   display: flex;
   flex-direction: column;
@@ -193,21 +193,21 @@
 }
 
 .text-settings-wrapper {
-  background-color: #d6d6d6;
-  padding: 10px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  position: absolute;
+  left: 3rem;
+  animation: slideIn 0.25s ease-out;
 }
 
 .text-align-wrapper {
   display: flex;
-  gap: 1rem;
+  gap: 10px;
+  align-items: center;
+  height: 30px;
 }
 
 .text-align-button {
-  background-color: #26232a;
+  background-color: transparent;
+  color: inherit;
   border: none;
   height: 30px;
   width: 30px;
@@ -215,7 +215,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  transition: all 0.25s ease;
   cursor: pointer;
 }
 
@@ -229,30 +228,32 @@
 
 .text-size-input {
   background-color: transparent;
-  color: black;
+  color: inherit;
   padding: 0;
   margin: 0;
-  border: 1px solid #26232a;
   width: 60px;
+  height: 100%;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 400;
   text-align: center;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .text-weight-input {
   background-color: transparent;
-  color: black;
+  color: inherit;
   padding: 0;
   margin: 0;
-  border: 1px solid #26232a;
   width: 60px;
+  height: 100%;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 400;
   text-align: center;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1500px) {
