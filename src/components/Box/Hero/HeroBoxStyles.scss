@@ -177,7 +177,6 @@
 
 .hero-box-text-input {
   width: 100%;
-  font-size: 1rem;
   background-color: transparent;
   border: none;
   font-family: inherit;
@@ -186,6 +185,8 @@
   padding: 0;
   box-sizing: border-box;
   word-wrap: break-word;
+  white-space: pre-wrap;
+  display: inline;
 }
 
 .text-settings-wrapper {

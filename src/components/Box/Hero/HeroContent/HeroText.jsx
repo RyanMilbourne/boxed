@@ -19,8 +19,15 @@ const HeroText = ({
 
   const adjustTextareaHeight = () => {
     const textarea = textareaRef.current;
+    const minHeight = `${textSize}px`;
+
     textarea.style.height = "auto";
-    textarea.style.height = `${textarea.scrollHeight}px`;
+    const scrollHeight = textarea.scrollHeight;
+
+    textarea.style.height = `${Math.max(
+      scrollHeight,
+      parseFloat(minHeight)
+    )}px`;
   };
 
   return (
@@ -29,13 +36,18 @@ const HeroText = ({
         ref={textareaRef}
         className="hero-box-text-input"
         value={textData}
-        onChange={handleTextChange}
+        onChange={(e) => {
+          handleTextChange(e);
+          adjustTextareaHeight();
+        }}
         spellCheck="false"
         style={{
           color: customTextColor,
           textAlign: textAlign,
           fontSize: `${textSize}px`,
           fontWeight: textWeight,
+          minHeight: `${textSize}px`,
+          lineHeight: `${textSize}px`,
         }}
       />
     </div>
