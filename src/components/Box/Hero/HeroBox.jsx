@@ -7,29 +7,13 @@ import TitleRoundedIcon from "@mui/icons-material/TitleRounded";
 import ImageRoundedIcon from "@mui/icons-material/ImageRounded";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import BuildCircleRoundedIcon from "@mui/icons-material/BuildCircleRounded";
-import FormatAlignLeftRoundedIcon from "@mui/icons-material/FormatAlignLeftRounded";
-import FormatAlignCenterRoundedIcon from "@mui/icons-material/FormatAlignCenterRounded";
-import FormatAlignRightRoundedIcon from "@mui/icons-material/FormatAlignRightRounded";
-import FormatAlignJustifyRoundedIcon from "@mui/icons-material/FormatAlignJustifyRounded";
-import VerticalAlignTopRoundedIcon from "@mui/icons-material/VerticalAlignTopRounded";
-import VerticalAlignCenterRoundedIcon from "@mui/icons-material/VerticalAlignCenterRounded";
-import VerticalAlignBottomRoundedIcon from "@mui/icons-material/VerticalAlignBottomRounded";
+
 import { ControlsContext } from "../../../hooks/ControlsContext";
 import boxFillerData from "../../../data/boxFillerData";
 import HeroText from "./HeroContent/HeroText";
+import HeroTextControls from "./HeroContent/HeroTextControls";
 
 const HeroBox = () => {
-  const [aspectRatio, setAspectRatio] = useState("1/1");
-  const [scale, setScale] = useState(1);
-  const [boxDisplay, setBoxDisplay] = useState(0);
-  const [image, setImage] = useState(boxFillerData.image);
-  const [imageURL, setImageURL] = useState(false);
-  const [textSettings, setTextSettings] = useState(false);
-  const [textAlign, setTextAlign] = useState("justify");
-  const [verticalAlign, setVerticalAlign] = useState("flex-start");
-  const [textSize, setTextSize] = useState(16);
-  const [textWeight, setTextWeight] = useState(400);
-
   const {
     boxShadows,
     backgroundColor,
@@ -42,8 +26,19 @@ const HeroBox = () => {
     handleHeroRadius,
   } = useContext(ControlsContext);
 
-  const [customTextColor, setCustomTextColor] = useState(textColor);
+  const [aspectRatio, setAspectRatio] = useState("1/1");
+  const [scale, setScale] = useState(1);
+  const [boxDisplay, setBoxDisplay] = useState(0);
+  const [image, setImage] = useState(boxFillerData.image);
+  const [imageURL, setImageURL] = useState(false);
+  const [textSettings, setTextSettings] = useState(false);
 
+  const [textAlign, setTextAlign] = useState("left");
+  const [verticalAlign, setVerticalAlign] = useState("flex-start");
+  const [textSize, setTextSize] = useState(16);
+  const [textWeight, setTextWeight] = useState(400);
+
+  const [customTextColor, setCustomTextColor] = useState(textColor);
   const boxShadowValue = boxShadows
     .map(
       (shadow) =>
@@ -106,26 +101,6 @@ const HeroBox = () => {
     setTextSettings((prev) => !prev);
   };
 
-  const handleTextAlign = (value) => {
-    setTextAlign(value);
-  };
-
-  const handleVerticalAlign = (value) => {
-    setVerticalAlign(value);
-  };
-
-  const handleCustomTextColor = (e) => {
-    setCustomTextColor(e.target.value);
-  };
-
-  const handleTextSize = (e) => {
-    setTextSize(e.target.value);
-  };
-
-  const handleTextWeight = (e) => {
-    setTextWeight(e.target.value);
-  };
-
   useEffect(() => {
     updateTextColor(backgroundColor);
   }, [backgroundColor, updateTextColor]);
@@ -186,89 +161,15 @@ const HeroBox = () => {
             </div>
           </div>
           {textSettings && (
-            <div className="text-settings-wrapper">
-              <div className="text-align-wrapper">
-                <button
-                  className="text-align-button"
-                  onClick={() => handleTextAlign("left")}
-                >
-                  <FormatAlignLeftRoundedIcon style={iconStyle2} />
-                </button>
-                <button
-                  className="text-align-button"
-                  onClick={() => handleTextAlign("center")}
-                >
-                  <FormatAlignCenterRoundedIcon style={iconStyle2} />
-                </button>
-                <button
-                  className="text-align-button"
-                  onClick={() => handleTextAlign("right")}
-                >
-                  <FormatAlignRightRoundedIcon style={iconStyle2} />
-                </button>
-                <button
-                  className="text-align-button"
-                  onClick={() => handleTextAlign("justify")}
-                >
-                  <FormatAlignJustifyRoundedIcon style={iconStyle2} />
-                </button>
-              </div>
-              <div className="text-align-wrapper">
-                <button
-                  className="text-align-button"
-                  onClick={() => handleVerticalAlign("flex-start")}
-                >
-                  <VerticalAlignTopRoundedIcon style={iconStyle2} />
-                </button>
-                <button
-                  className="text-align-button"
-                  onClick={() => handleVerticalAlign("center")}
-                >
-                  <VerticalAlignCenterRoundedIcon style={iconStyle2} />
-                </button>
-                <button
-                  className="text-align-button"
-                  onClick={() => handleVerticalAlign("flex-end")}
-                >
-                  <VerticalAlignBottomRoundedIcon style={iconStyle2} />
-                </button>
-              </div>
-              <div className="text-align-wrapper">
-                <div
-                  className="color-picker-display text-color"
-                  style={{ backgroundColor: customTextColor }}
-                >
-                  <input
-                    className="color-picker"
-                    type="color"
-                    onChange={handleCustomTextColor}
-                  />
-                </div>
-                <input
-                  className="text-size-input"
-                  type="number"
-                  min="0"
-                  value={textSize}
-                  onChange={handleTextSize}
-                />
-                <select
-                  name="fontWeight"
-                  id="fontWeight"
-                  className="text-weight-input"
-                  onChange={handleTextWeight}
-                >
-                  <option value="100">100</option>
-                  <option value="200">200</option>
-                  <option value="300">300</option>
-                  <option value="400" selected>
-                    400
-                  </option>
-                  <option value="500">500</option>
-                  <option value="600">600</option>
-                  <option value="700">700</option>
-                </select>
-              </div>
-            </div>
+            <HeroTextControls
+              setTextAlign={setTextAlign}
+              setVerticalAlign={setVerticalAlign}
+              setTextWeight={setTextWeight}
+              textSize={textSize}
+              setTextSize={setTextSize}
+              customTextColor={customTextColor}
+              setCustomTextColor={setCustomTextColor}
+            />
           )}
         </div>
         <div className="content-option-wrapper">
