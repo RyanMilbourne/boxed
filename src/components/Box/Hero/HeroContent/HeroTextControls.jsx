@@ -54,6 +54,7 @@ const HeroTextControls = ({
           className="color-picker-display text-color"
           style={{
             backgroundColor: customTextColor,
+            border: `1px solid ${borderColor}`,
           }}
         >
           <input
