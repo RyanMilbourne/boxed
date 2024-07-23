@@ -38,9 +38,33 @@
   border: none;
 }
 
-.slider {
+.hero-radius-slider {
   width: 100px;
-  padding: 0;
+  border-radius: 20px;
+  height: 16px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0 4px;
+  -webkit-appearance: none;
+  --thumb-bg-color: #fff;
+}
+
+.hero-radius-slider:-webkit-slider-runnable-track {
+  width: 100%;
+  // height: 20px;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 5px;
+}
+
+.hero-radius-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: var(--thumb-bg-color);
+  cursor: pointer;
 }
 
 .hero-box-aspect-ratio-container {

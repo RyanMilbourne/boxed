@@ -208,9 +208,13 @@ const HeroBox = () => {
           type="range"
           min="0"
           max="200"
-          className="hero-radius slider"
+          className="hero-radius-slider"
           value={heroRadius}
           onChange={handleHeroRadiusChange}
+          style={{
+            border: `1px solid ${textColor}`,
+            "--thumb-bg-color": textColor,
+          }}
         />
         <input
           className="hero-radius"
