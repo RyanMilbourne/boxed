@@ -161,6 +161,10 @@ const Controls = ({ index }) => {
           max="100"
           value={shadow.xPosition}
           onChange={handleXPosition}
+          style={{
+            border: `1px solid ${textColor}`,
+            "--thumb-bg-color": textColor,
+          }}
         />
         <input
           className="xybs-input"
@@ -181,6 +185,10 @@ const Controls = ({ index }) => {
           max="100"
           value={shadow.yPosition}
           onChange={handleYPosition}
+          style={{
+            border: `1px solid ${textColor}`,
+            "--thumb-bg-color": textColor,
+          }}
         />
         <input
           className="xybs-input"
@@ -201,6 +209,10 @@ const Controls = ({ index }) => {
           max="100"
           value={shadow.blurValue}
           onChange={handleBlurChange}
+          style={{
+            border: `1px solid ${textColor}`,
+            "--thumb-bg-color": textColor,
+          }}
         />
         <input
           className="xybs-input"
@@ -221,6 +233,10 @@ const Controls = ({ index }) => {
           max="100"
           value={shadow.spreadValue}
           onChange={handleSpreadChange}
+          style={{
+            border: `1px solid ${textColor}`,
+            "--thumb-bg-color": textColor,
+          }}
         />
         <input
           className="xybs-input"
