@@ -32,12 +32,10 @@ const HeroBox = () => {
   const [image, setImage] = useState(boxFillerData.image);
   const [imageURL, setImageURL] = useState(false);
   const [textSettings, setTextSettings] = useState(false);
-
   const [textAlign, setTextAlign] = useState("left");
   const [verticalAlign, setVerticalAlign] = useState("flex-start");
   const [textSize, setTextSize] = useState(16);
   const [textWeight, setTextWeight] = useState(400);
-
   const [customTextColor, setCustomTextColor] = useState(textColor);
   const boxShadowValue = boxShadows
     .map(
