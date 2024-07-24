@@ -14,7 +14,7 @@ const ControlsHome = () => {
       style={{ backgroundColor: backgroundColor, color: textColor }}
     >
       <div className="controls-wrapper">
-        <div className="controls-header">Shadow Layers</div>
+        <div className="controls-header">shadows</div>
         <div className="controls-body">
           <form className="control-form">
             {boxShadows.map((_, index) => (
