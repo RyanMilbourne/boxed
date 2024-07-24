@@ -5,6 +5,7 @@ import ControlsHome from "./Controls/ControlsHome";
 import { ControlsContext } from "../../hooks/ControlsContext";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import HeroPresets from "./Hero/HeroContent/HeroPresets";
+import HeroAspectRatios from "./Hero/HeroContent/HeroAspectRatios";
 
 const BoxHome = () => {
   const { textColor, addBoxShadow } = useContext(ControlsContext);
@@ -23,6 +24,7 @@ const BoxHome = () => {
       <ControlsHome />
       <HeroBox />
       <HeroPresets />
+      <HeroAspectRatios />
     </div>
   );
 };

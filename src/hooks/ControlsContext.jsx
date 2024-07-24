@@ -12,6 +12,7 @@ export const ControlsProvider = ({ children }) => {
   const [heroBoxColor, setHeroBoxColor] = useState("#ffd500");
   const [heroRadius, setHeroRadius] = useState(30);
   const [textColor, setTextColor] = useState("#0b090d");
+  const [aspectRatio, setAspectRatio] = useState("1/1");
 
   const addBoxShadow = () => {
     setBoxShadows([
@@ -88,6 +89,10 @@ export const ControlsProvider = ({ children }) => {
     }
   };
 
+  const handleHeroAspectRatio = (newRatio) => {
+    setAspectRatio(newRatio);
+  };
+
   return (
     <ControlsContext.Provider
       value={{
@@ -105,6 +110,8 @@ export const ControlsProvider = ({ children }) => {
         handleHeroBoxColor,
         heroRadius,
         handleHeroRadius,
+        aspectRatio,
+        handleHeroAspectRatio,
       }}
     >
       {children}

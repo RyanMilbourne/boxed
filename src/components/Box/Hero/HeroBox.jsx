@@ -24,9 +24,9 @@ const HeroBox = () => {
     handleHeroBoxColor,
     heroRadius,
     handleHeroRadius,
+    aspectRatio,
   } = useContext(ControlsContext);
 
-  const [aspectRatio, setAspectRatio] = useState("1/1");
   const [scale, setScale] = useState(1);
   const [boxDisplay, setBoxDisplay] = useState(0);
   const [image, setImage] = useState(boxFillerData.image);
@@ -61,10 +61,6 @@ const HeroBox = () => {
     backgroundImage: `url('${image}')`,
     backgroundSize: "cover",
     backgroundPosition: "center",
-  };
-
-  const onRatioChange = (e) => {
-    setAspectRatio(e.target.textContent);
   };
 
   const handleHeroBoxColorChange = (e) => {
@@ -225,23 +221,6 @@ const HeroBox = () => {
           onChange={handleHeroRadiusChange}
           style={{ border: `1px solid ${textColor}`, color: textColor }}
         />
-      </div>
-      <div className="hero-box-aspect-ratio-container">
-        {["1/1", "3/4", "4/3", "4/5", "5/4", "16/9"].map((ratio) => (
-          <div
-            key={ratio}
-            className={`aspect-ratio ${aspectRatio === ratio ? "active" : ""}`}
-            style={{
-              border: `1px solid ${backgroundColor}`,
-              backgroundColor:
-                aspectRatio === ratio ? backgroundColor : "transparent",
-              color: aspectRatio === ratio ? textColor : "white",
-            }}
-            onClick={onRatioChange}
-          >
-            {ratio}
-          </div>
-        ))}
       </div>
       <div className="hero-box-color-container">
         <div
