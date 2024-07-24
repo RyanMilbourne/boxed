@@ -3,53 +3,34 @@ import { ControlsContext } from "../../../../hooks/ControlsContext";
 import AutoFixHighRoundedIcon from "@mui/icons-material/AutoFixHighRounded";
 
 const HeroPresets = () => {
-  const { selectPreset, backgroundColor, textColor, addBoxShadow } =
-    useContext(ControlsContext);
+  const {
+    selectPreset,
+    backgroundColor,
+    textColor,
+    addBoxShadow,
+    activePreset,
+  } = useContext(ControlsContext);
 
-  const presetStyle = {
-    backgroundColor: backgroundColor,
-    color: textColor,
-  };
   return (
     <div className="shadow-presets-container">
       <div className="preset-menu-wrapper">
         <AutoFixHighRoundedIcon />
       </div>
-      <div
-        className="preset-wrapper"
-        style={presetStyle}
-        onClick={() => selectPreset(0)}
-      >
-        1
-      </div>
-      <div
-        className="preset-wrapper"
-        style={presetStyle}
-        onClick={() => selectPreset(1)}
-      >
-        2
-      </div>
-      <div
-        className="preset-wrapper"
-        style={presetStyle}
-        onClick={() => selectPreset(2)}
-      >
-        3
-      </div>
-      <div
-        className="preset-wrapper"
-        style={presetStyle}
-        onClick={() => selectPreset(3)}
-      >
-        4
-      </div>
-      <div
-        className="preset-wrapper"
-        style={presetStyle}
-        onClick={() => selectPreset(4)}
-      >
-        5
-      </div>
+      {["1", "2", "3", "4", "5"].map((preset, index) => (
+        <div
+          key={preset}
+          className="preset-wrapper"
+          style={{
+            border: `1px solid ${backgroundColor}`,
+            backgroundColor:
+              activePreset === index ? backgroundColor : "transparent",
+            color: activePreset === index ? textColor : "white",
+          }}
+          onClick={() => selectPreset(index)}
+        >
+          {preset}
+        </div>
+      ))}
     </div>
   );
 };

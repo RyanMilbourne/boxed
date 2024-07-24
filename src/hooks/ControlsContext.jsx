@@ -14,6 +14,8 @@ export const ControlsProvider = ({ children }) => {
   const [textColor, setTextColor] = useState("#0b090d");
   const [aspectRatio, setAspectRatio] = useState("1/1");
 
+  const [activePreset, setActivePreset] = useState(0);
+
   const addBoxShadow = () => {
     setBoxShadows([
       ...boxShadows,
@@ -86,6 +88,7 @@ export const ControlsProvider = ({ children }) => {
       handleBackgroundColor(newBackgroundColor);
       handleHeroBoxColor(newHeroBoxColor);
       handleHeroRadius(newHeroRadius);
+      setActivePreset(presetIndex);
     }
   };
 
@@ -106,6 +109,7 @@ export const ControlsProvider = ({ children }) => {
         handleBackgroundColor,
         textColor,
         selectPreset,
+        activePreset,
         heroBoxColor,
         handleHeroBoxColor,
         heroRadius,
