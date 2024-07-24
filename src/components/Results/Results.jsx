@@ -32,7 +32,7 @@ const Results = () => {
   const iconStyle = {
     width: "1.5rem",
     height: "1.5rem",
-    color: backgroundColor,
+    color: "rgba(255, 255, 255, 0.87)",
     margin: "0",
     padding: "0",
   };
