@@ -11,7 +11,7 @@ const HeroAspectRatios = () => {
       <div className="preset-menu-wrapper">
         <AspectRatioRoundedIcon />
       </div>
-      {["1/1", "3/4", "4/3", "4/5", "5/4", "16/9"].map((ratio) => (
+      {["1/1", "3/4", "4/3", "16/9", "21/9"].map((ratio) => (
         <div
           key={ratio}
           className={`aspect-ratio ${aspectRatio === ratio ? "active" : ""}`}
